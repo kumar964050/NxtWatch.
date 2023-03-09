@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import ThemeContext from '../../context/ThemeContext'
 import {
   LoginContainer,
@@ -23,6 +25,19 @@ class LoginRoute extends Component {
     showErrorMsg: false,
   }
 
+  changeRoute = jwtToken => {
+    const {username, password} = this.state
+    const {history} = this.props
+    Cookies.set('jwt_token', jwtToken, {expires: 7})
+    localStorage.setItem('username', username)
+    localStorage.setItem('password', password)
+    history.replace('/')
+  }
+
+  getDisplayErrorMsg = error => {
+    this.setState({errorMsg: error, showErrorMsg: true})
+  }
+
   submitDetails = async event => {
     event.preventDefault()
     const {username, password} = this.state
@@ -37,7 +52,11 @@ class LoginRoute extends Component {
     }
     const response = await fetch(url, option)
     const data = await response.json()
-    console.log(data)
+    if (response.ok === true) {
+      this.changeRoute(data.jwt_token)
+    } else {
+      this.getDisplayErrorMsg(data.error_msg)
+    }
   }
 
   changeUsername = event => {
@@ -61,6 +80,11 @@ class LoginRoute extends Component {
       errorMsg,
     } = this.state
 
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect path="/" />
+    }
+
     return (
       <ThemeContext.Consumer>
         {value => {
@@ -71,9 +95,10 @@ class LoginRoute extends Component {
             ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
             : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
           const formBackground = darkTheme ? '#0f0f0f' : '#f8fafc'
-          const labelColor = darkTheme ? '#ffffff' : '#0f0f0f'
+          const labelColor = darkTheme ? '#ffffff' : ' #475569'
           const inputBorder = darkTheme ? '#475569' : '#94a3b8'
           const inputColor = darkTheme ? '#ffffff' : '#0f0f0f'
+          const errorMsgColor = darkTheme ? '#ff0000' : '#ff0b37'
 
           return (
             <LoginContainer loginBackground={background}>
@@ -81,7 +106,7 @@ class LoginRoute extends Component {
                 FormBackground={formBackground}
                 onSubmit={this.submitDetails}
               >
-                <AppLogo src={appLogo} alt="Logo" />
+                <AppLogo src={appLogo} alt="website logo" />
                 <UserLabel LabelColor={labelColor} htmlFor="userName">
                   USERNAME
                 </UserLabel>
@@ -116,7 +141,9 @@ class LoginRoute extends Component {
                   Show Password
                 </CheckboxLabel>
                 <FormButton type="submit">Login</FormButton>
-                {showErrorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
+                {showErrorMsg && (
+                  <ErrorMsg ErrorMsg={errorMsgColor}>{`*${errorMsg}`}</ErrorMsg>
+                )}
               </Form>
             </LoginContainer>
           )

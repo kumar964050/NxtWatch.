@@ -2,12 +2,14 @@ import {Switch, Route} from 'react-router-dom'
 import {Component} from 'react'
 import LoginRoute from './components/LoginRoute'
 import ThemeContext from './context/ThemeContext'
+import UserDetailsRoute from './components/UserDetailsRoute'
+import Home from './components/Home'
 import './App.css'
 
 // Replace your code here
 class App extends Component {
   state = {
-    darkTheme: true,
+    darkTheme: false,
   }
 
   changeTheme = () => {
@@ -20,6 +22,7 @@ class App extends Component {
       <ThemeContext.Provider value={{darkTheme, changeTheme: this.changeTheme}}>
         <Switch>
           <Route exact path="/login" component={LoginRoute} />
+          <UserDetailsRoute exact path="/" component={Home} />
         </Switch>
       </ThemeContext.Provider>
     )
