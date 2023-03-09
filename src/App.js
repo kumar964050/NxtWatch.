@@ -7,7 +7,7 @@ import './App.css'
 // Replace your code here
 class App extends Component {
   state = {
-    darkTheme: false,
+    darkTheme: true,
   }
 
   changeTheme = () => {
