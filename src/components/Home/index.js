@@ -1,8 +1,9 @@
 import {Component} from 'react'
+import {MdClose} from 'react-icons/md'
+import {BiSearch} from 'react-icons/bi'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
-import {RxCross2} from 'react-icons/rx'
 import {
   HomeContainer,
   HomeDetailContainer,
@@ -13,6 +14,10 @@ import {
   HomeDescription,
   HomeButton,
   CrossMarkCon,
+  VideosUl,
+  SearchContainer,
+  SearchInput,
+  SearchButton,
 } from './styledComponent'
 import BannerSection from '../BannerSection'
 
@@ -20,6 +25,7 @@ class Home extends Component {
   state = {
     searchInput: '',
     homeList: [],
+    premium: true,
   }
 
   componentDidMount() {
@@ -50,40 +56,67 @@ class Home extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
       }))
+      console.log(newData)
       this.setState({homeList: newData})
     }
   }
 
+  changeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  callTheServer = () => {
+    this.searchMovies()
+  }
+
+  deletePremium = () => {
+    this.setState({premium: false})
+  }
+
   render() {
+    const {premium, homeList, searchInput} = this.state
     return (
       <ThemeContext.Consumer>
         {value => {
           const {darkTheme} = value
-          const homeLogo = darkTheme
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
           return (
             <>
               <Header />
               <HomeContainer>
                 <BannerSection />
-                <HomeDetailContainer>
+                {premium && (
                   <HomeBanner
                     ImageUrl="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
                     alt="Banner Background image"
                   >
                     <PremiumContainer>
                       <PremiumDetails>
-                        <HomeLog src={homeLogo} alt="website logo" />
-                        <HomeDescription>Buy Nxt Watch Premium prepaid plans with UPI</HomeDescription>
+                        <HomeLog
+                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                          alt="website logo"
+                        />
+                        <HomeDescription>
+                          Buy Nxt Watch Premium prepaid plans with UPI
+                        </HomeDescription>
                         <HomeButton>GET IT NOW</HomeButton>
-                        <CrossMarkCon>
-                          <RxCross2 />
-                        </CrossMarkCon>
                       </PremiumDetails>
+                      <CrossMarkCon type="button" onClick={this.deletePremium}>
+                        <MdClose />
+                      </CrossMarkCon>
                     </PremiumContainer>
                   </HomeBanner>
-                </HomeDetailContainer>
+                )}
+                <SearchContainer>
+                  <SearchInput
+                    type="text"
+                    value={searchInput}
+                    onChange={this.changeSearchInput}
+                    placeholder="Search"
+                  />
+                  <SearchButton type="button" onClick={this.callTheServer}>
+                    <BiSearch />
+                  </SearchButton>
+                </SearchContainer>
               </HomeContainer>
             </>
           )

@@ -2,7 +2,7 @@ import {Component} from 'react'
 import Popup from 'reactjs-popup'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
-import {FiLogOut} from 'react-icons/fi'
+import {FiLogOut, FiSun} from 'react-icons/fi'
 import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -35,7 +35,7 @@ class Header extends Component {
   }
 
   render() {
-    const {hamburger} = this.state
+    const {hamburger, themeImage} = this.state
     return (
       <>
         <ThemeContext.Consumer>
@@ -61,7 +61,11 @@ class Header extends Component {
                     type="button"
                     onClick={changeAppTheme}
                   >
-                    <FaMoon className="dark-theme" />
+                    {darkTheme ? (
+                      <FiSun className="dark-theme" />
+                    ) : (
+                      <FaMoon className="dark-theme" />
+                    )}
                   </HeaderTheme>
 
                   <HamburgerButton
