@@ -6,6 +6,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   padding-left: 5%;
   align-items: center;
+  background: ${props => props.HeaderBg};
 `
 
 export const HeaderImage = styled.img`
@@ -14,6 +15,10 @@ export const HeaderImage = styled.img`
 
 export const HeaderThemeContainer = styled.div`
   height: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
 `
 
 export const HeaderTheme = styled.button`
@@ -22,25 +27,42 @@ export const HeaderTheme = styled.button`
   border: 0px;
   cursor: pointer;
   outline: none;
+  color: ${props => props.IconsColor};
 `
 
 export const UnorderedList = styled.ul`
   list-style-type: none;
   padding-left: 0px;
   width: 200px;
-  margin-top: 71px;
+
+  height: 180px;
+
+  margin-top: 0px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
   margin-right: 2%;
+  &::after {
+    height: 30px;
+    width: 30px;
+    background: yellow;
+  }
 `
 
 export const HamburgerButton = styled(HeaderTheme)`
   height: 40px;
+  color: ${props => props.IconsColor};
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 export const LogoutButton = styled(HeaderTheme)`
   height: 40px;
+  color: ${props => props.IconsColor};
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 
 export const ListItem = styled.li`
@@ -62,4 +84,23 @@ export const ReactNavIcons = styled.div`
 `
 export const UnOrderedListCon = styled.div`
   height: 180px;
+  width: 100%;
+  position: absolute;
+  top: 9%;
+  display: flex;
+  justify-content: flex-end;
+`
+export const AccountProfile = styled.img`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    height: 30px;
+  }
+`
+
+export const LogoutMdButton = styled.button`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+  }
 `

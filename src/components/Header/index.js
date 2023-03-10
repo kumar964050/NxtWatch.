@@ -18,6 +18,9 @@ import {
   ListItem,
   UnorderedList,
   NavNames,
+  UnOrderedListCon,
+  AccountProfile,
+  LogoutMdButton,
 } from './styledComponent'
 import ThemeContext from '../../context/ThemeContext'
 import './index.css'
@@ -46,20 +49,36 @@ class Header extends Component {
               ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
               : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
+            const headerBackground = darkTheme ? '#181818' : '#f9f9f9'
+            const iconsColor = darkTheme ? '#ffffff' : '#0f0f0f'
+
             return (
-              <HeaderContainer>
+              <HeaderContainer HeaderBg={headerBackground}>
                 <HeaderImage src={headerLogo} />
                 <HeaderThemeContainer>
-                  <HeaderTheme type="button" onClick={changeAppTheme}>
+                  <HeaderTheme
+                    IconsColor={iconsColor}
+                    type="button"
+                    onClick={changeAppTheme}
+                  >
                     <FaMoon className="dark-theme" />
                   </HeaderTheme>
 
-                  <HamburgerButton type="button" onClick={this.openHamburger}>
+                  <HamburgerButton
+                    IconsColor={iconsColor}
+                    type="button"
+                    onClick={this.openHamburger}
+                  >
                     <GiHamburgerMenu className="dark-theme" />
                   </HamburgerButton>
-                  <LogoutButton>
+                  <AccountProfile
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                    alt="profile"
+                  />
+                  <LogoutButton IconsColor={iconsColor}>
                     <FiLogOut className="dark-theme" />
                   </LogoutButton>
+                  <LogoutMdButton>Logout</LogoutMdButton>
                 </HeaderThemeContainer>
               </HeaderContainer>
             )
@@ -67,32 +86,34 @@ class Header extends Component {
         </ThemeContext.Consumer>
 
         {hamburger && (
-          <UnorderedList>
-            <ListItem>
-              <ReactNavIcons>
-                <AiFillHome />
-              </ReactNavIcons>
-              <NavNames>Home</NavNames>
-            </ListItem>
-            <ListItem>
-              <ReactNavIcons>
-                <HiFire />
-              </ReactNavIcons>
-              <NavNames>Trending</NavNames>
-            </ListItem>
-            <ListItem>
-              <ReactNavIcons>
-                <SiYoutubegaming />
-              </ReactNavIcons>
-              <NavNames>Gaming</NavNames>
-            </ListItem>
-            <ListItem>
-              <ReactNavIcons>
-                <MdPlaylistAdd />
-              </ReactNavIcons>
-              <NavNames>Saved Videos</NavNames>
-            </ListItem>
-          </UnorderedList>
+          <UnOrderedListCon>
+            <UnorderedList>
+              <ListItem>
+                <ReactNavIcons>
+                  <AiFillHome />
+                </ReactNavIcons>
+                <NavNames>Home</NavNames>
+              </ListItem>
+              <ListItem>
+                <ReactNavIcons>
+                  <HiFire />
+                </ReactNavIcons>
+                <NavNames>Trending</NavNames>
+              </ListItem>
+              <ListItem>
+                <ReactNavIcons>
+                  <SiYoutubegaming />
+                </ReactNavIcons>
+                <NavNames>Gaming</NavNames>
+              </ListItem>
+              <ListItem>
+                <ReactNavIcons>
+                  <MdPlaylistAdd />
+                </ReactNavIcons>
+                <NavNames>Saved Videos</NavNames>
+              </ListItem>
+            </UnorderedList>
+          </UnOrderedListCon>
         )}
       </>
     )
