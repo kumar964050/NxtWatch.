@@ -4,6 +4,7 @@ import {BiSearch} from 'react-icons/bi'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
+import VideoDetail from '../VideoDetail'
 import {
   HomeContainer,
   HomeDetailContainer,
@@ -18,6 +19,8 @@ import {
   SearchContainer,
   SearchInput,
   SearchButton,
+  HomeVideosContainer,
+  VideoDetailUl,
 } from './styledComponent'
 import BannerSection from '../BannerSection'
 
@@ -84,39 +87,49 @@ class Home extends Component {
               <Header />
               <HomeContainer>
                 <BannerSection />
-                {premium && (
-                  <HomeBanner
-                    ImageUrl="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
-                    alt="Banner Background image"
-                  >
-                    <PremiumContainer>
-                      <PremiumDetails>
-                        <HomeLog
-                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                          alt="website logo"
-                        />
-                        <HomeDescription>
-                          Buy Nxt Watch Premium prepaid plans with UPI
-                        </HomeDescription>
-                        <HomeButton>GET IT NOW</HomeButton>
-                      </PremiumDetails>
-                      <CrossMarkCon type="button" onClick={this.deletePremium}>
-                        <MdClose />
-                      </CrossMarkCon>
-                    </PremiumContainer>
-                  </HomeBanner>
-                )}
-                <SearchContainer>
-                  <SearchInput
-                    type="text"
-                    value={searchInput}
-                    onChange={this.changeSearchInput}
-                    placeholder="Search"
-                  />
-                  <SearchButton type="button" onClick={this.callTheServer}>
-                    <BiSearch />
-                  </SearchButton>
-                </SearchContainer>
+                <HomeVideosContainer>
+                  {premium && (
+                    <HomeBanner
+                      ImageUrl="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
+                      alt="Banner Background image"
+                    >
+                      <PremiumContainer>
+                        <PremiumDetails>
+                          <HomeLog
+                            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                            alt="website logo"
+                          />
+                          <HomeDescription>
+                            Buy Nxt Watch Premium prepaid plans with UPI
+                          </HomeDescription>
+                          <HomeButton>GET IT NOW</HomeButton>
+                        </PremiumDetails>
+                        <CrossMarkCon
+                          type="button"
+                          onClick={this.deletePremium}
+                        >
+                          <MdClose />
+                        </CrossMarkCon>
+                      </PremiumContainer>
+                    </HomeBanner>
+                  )}
+                  <SearchContainer>
+                    <SearchInput
+                      type="text"
+                      value={searchInput}
+                      onChange={this.changeSearchInput}
+                      placeholder="Search"
+                    />
+                    <SearchButton type="button" onClick={this.callTheServer}>
+                      <BiSearch />
+                    </SearchButton>
+                  </SearchContainer>
+                  <VideoDetailUl>
+                    {homeList.map(eachVideo => (
+                      <VideoDetail key={eachVideo.id} videoDetail={eachVideo} />
+                    ))}
+                  </VideoDetailUl>
+                </HomeVideosContainer>
               </HomeContainer>
             </>
           )

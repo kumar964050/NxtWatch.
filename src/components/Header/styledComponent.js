@@ -5,6 +5,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding-left: 5%;
+  padding-right: 5%;
   align-items: center;
   background: ${props => props.HeaderBg};
 `
@@ -18,6 +19,9 @@ export const HeaderThemeContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 160px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 `
 
@@ -43,7 +47,7 @@ export const UnorderedList = styled.ul`
   flex-direction: column;
   border-radius: 6px;
   margin-right: 2%;
-  &::after {
+  &::before {
     height: 30px;
     width: 30px;
     background: yellow;

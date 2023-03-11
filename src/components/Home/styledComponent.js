@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   width: 100%;
+  display: flex;
 `
 
 export const HomeDetailContainer = styled.div`
@@ -12,6 +13,11 @@ export const HomeBanner = styled.div`
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 15px;
+  background-image: url(${props => props.ImageUrl});
+
+  @media screen and (min-width: 576px) {
+    padding-left: 5%;
+  }
 `
 export const PremiumContainer = styled.div`
   height: 250px;
@@ -53,27 +59,52 @@ export const VideosUl = styled.ul`
   padding-left: 0px;
 `
 export const SearchContainer = styled.div`
-  height: 60px;
+  height: 75px;
   padding-left: 5%;
   padding-right: 5%;
   display: flex;
   align-items: center;
+  @media screen and (min-width: 576px) {
+    background-size: cover;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 5%;
+  }
 `
 export const SearchInput = styled.input`
   height: 35px;
-  flex-grow: 1;
+  width: 80%;
   border: 1px solid;
   outline: none;
   padding-left: 10px;
   font-family: 'Roboto';
   font-size: 14px;
   border-right: 0px;
+  @media screen and (min-width: 576px) {
+    width: 66%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 `
 export const SearchButton = styled.button`
   height: 35px;
-  width: 60px;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid;
+  @media screen and (min-width: 576px) {
+    width: 15%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 12%;
+  }
+`
+export const HomeVideosContainer = styled.div`
+  width: 100%;
+`
+export const VideoDetailUl = styled.ul`
+  list-style-type: none;
+  padding-left: 0px;
 `
