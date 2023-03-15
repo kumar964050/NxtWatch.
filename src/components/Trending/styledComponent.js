@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const TrendingContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   padding-top: 75px;
 `
 
@@ -26,6 +27,9 @@ export const FireImage = styled.div`
 `
 export const TrendingHeading = styled.h1`
   font-family: 'Roboto';
-    font-size: 22px;
-}
+  font-size: 22px;
+`
+export const TrendingUl = styled.ul`
+  list-style-type: none;
+  padding-left: 0px;
 `

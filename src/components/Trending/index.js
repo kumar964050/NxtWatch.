@@ -3,11 +3,13 @@ import Cookies from 'js-cookie'
 import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import BannerSection from '../BannerSection'
+import TrendingVideo from '../TrendingVideo'
 import {
   TrendingContainer,
   TrendingHeading,
   FireContainer,
   FireImage,
+  TrendingUl,
 } from './styledComponent'
 import './inde.css'
 
@@ -43,11 +45,13 @@ class Trending extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
       }))
+      console.log(newData)
       this.setState({trendingList: newData})
     }
   }
 
   render() {
+    const {trendingList} = this.state
     return (
       <>
         <Header />
@@ -58,6 +62,11 @@ class Trending extends Component {
             </FireImage>
             <TrendingHeading>Trending</TrendingHeading>
           </FireContainer>
+          <TrendingUl>
+            {trendingList.map(each => (
+              <TrendingVideo key={each.id} trendingVideo={each} />
+            ))}
+          </TrendingUl>
         </TrendingContainer>
       </>
     )

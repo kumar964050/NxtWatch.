@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const VideoList = styled.li`
+export const TrendingList = styled.li`
   height: 310px;
   @media screen and (min-width: 576px) {
     height: 300px;
@@ -37,7 +37,7 @@ export const ChannelContainer = styled.div`
 `
 export const ChannelImageCon = styled.div`
   height: 40px;
-  margin-right: 10px;
+  width: 32%;
   @media screen and (min-width: 576px) {
     height: 45%;
     width: 45%;
