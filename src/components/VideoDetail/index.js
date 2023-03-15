@@ -12,6 +12,7 @@ import {
   ChannelViewCon,
   ChannelSpan,
   ChannelSpan2,
+  DotContainer,
 } from './styledComponent'
 
 const VideoDetail = props => {
@@ -30,12 +31,12 @@ const VideoDetail = props => {
           <ChannelTitle>{title}</ChannelTitle>
           <ChannelViewCon>
             <ChannelName>{name}</ChannelName>
-            <ChannelViews>
+            <DotContainer>
               <ChannelSpan>.</ChannelSpan>
-              {`${viewCount} views`}
+              <ChannelViews>{viewCount}</ChannelViews>
               <ChannelSpan2>.</ChannelSpan2>
-              {published}
-            </ChannelViews>
+              <ChannelViews>{published}</ChannelViews>
+            </DotContainer>
           </ChannelViewCon>
         </ChannelDetailsCon>
       </ChannelContainer>

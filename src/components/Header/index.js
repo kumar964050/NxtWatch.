@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -92,18 +93,22 @@ class Header extends Component {
         {hamburger && (
           <UnOrderedListCon>
             <UnorderedList>
-              <ListItem>
-                <ReactNavIcons>
-                  <AiFillHome />
-                </ReactNavIcons>
-                <NavNames>Home</NavNames>
-              </ListItem>
-              <ListItem>
-                <ReactNavIcons>
-                  <HiFire />
-                </ReactNavIcons>
-                <NavNames>Trending</NavNames>
-              </ListItem>
+              <Link to="/">
+                <ListItem>
+                  <ReactNavIcons>
+                    <AiFillHome />
+                  </ReactNavIcons>
+                  <NavNames>Home</NavNames>
+                </ListItem>
+              </Link>
+              <Link to="/trending">
+                <ListItem>
+                  <ReactNavIcons>
+                    <HiFire />
+                  </ReactNavIcons>
+                  <NavNames>Trending</NavNames>
+                </ListItem>
+              </Link>
               <ListItem>
                 <ReactNavIcons>
                   <SiYoutubegaming />

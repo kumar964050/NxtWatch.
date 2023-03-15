@@ -59,7 +59,6 @@ class Home extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
       }))
-      console.log(newData)
       this.setState({homeList: newData})
     }
   }

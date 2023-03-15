@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
   width: 100%;
   display: flex;
+  padding-top: 75px;
 `
 
 export const HomeDetailContainer = styled.div`
@@ -14,6 +15,7 @@ export const HomeBanner = styled.div`
   padding-right: 10%;
   padding-top: 15px;
   background-image: url(${props => props.ImageUrl});
+  background-size: cover;
 
   @media screen and (min-width: 576px) {
     padding-left: 5%;
@@ -103,8 +105,25 @@ export const SearchButton = styled.button`
 `
 export const HomeVideosContainer = styled.div`
   width: 100%;
+  @media screen and (min-width: 768px) {
+    margin-left: 20%;
+  }
 `
 export const VideoDetailUl = styled.ul`
   list-style-type: none;
   padding-left: 0px;
+  @media screen and (min-width: 576px) {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `

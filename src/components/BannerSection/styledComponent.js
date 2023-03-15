@@ -35,10 +35,11 @@ export const UnOrderedListConB = styled.div`
   display: none;
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 30%;
+    width: 20%;
     height: 90vh;
     flex-direction: column;
     justify-content: space-between;
+    position: fixed;
   }
 `
 export const FooterHeading = styled.h1`
@@ -69,7 +70,7 @@ export const FooterDescription = styled.p`
   @media screen and (min-width: 768px) {
     display: block;
     font-family: 'Roboto';
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
   }
 `
@@ -78,5 +79,6 @@ export const FooterContainer = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     padding-left: 15%;
+    height: 175px;
   }
 `

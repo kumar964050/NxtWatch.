@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut, FiSun} from 'react-icons/fi'
@@ -21,18 +22,22 @@ import {
 const BannerSection = () => (
   <UnOrderedListConB>
     <UnorderedListB>
-      <ListItemB>
-        <ReactNavIconsB>
-          <AiFillHome />
-        </ReactNavIconsB>
-        <NavNamesB>Home</NavNamesB>
-      </ListItemB>
-      <ListItemB>
-        <ReactNavIconsB>
-          <HiFire />
-        </ReactNavIconsB>
-        <NavNamesB>Trending</NavNamesB>
-      </ListItemB>
+      <Link to="/">
+        <ListItemB>
+          <ReactNavIconsB>
+            <AiFillHome />
+          </ReactNavIconsB>
+          <NavNamesB>Home</NavNamesB>
+        </ListItemB>
+      </Link>
+      <Link to="/trending">
+        <ListItemB>
+          <ReactNavIconsB>
+            <HiFire />
+          </ReactNavIconsB>
+          <NavNamesB>Trending</NavNamesB>
+        </ListItemB>
+      </Link>
       <ListItemB>
         <ReactNavIconsB>
           <SiYoutubegaming />

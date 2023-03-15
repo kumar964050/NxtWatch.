@@ -4,6 +4,7 @@ import LoginRoute from './components/LoginRoute'
 import ThemeContext from './context/ThemeContext'
 import UserDetailsRoute from './components/UserDetailsRoute'
 import Home from './components/Home'
+import Trending from './components/Trending'
 import './App.css'
 
 // Replace your code here
@@ -23,6 +24,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={LoginRoute} />
           <UserDetailsRoute exact path="/" component={Home} />
+          <UserDetailsRoute exact path="/trending" component={Trending} />
         </Switch>
       </ThemeContext.Provider>
     )

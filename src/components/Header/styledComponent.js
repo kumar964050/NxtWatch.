@@ -8,6 +8,8 @@ export const HeaderContainer = styled.div`
   padding-right: 5%;
   align-items: center;
   background: ${props => props.HeaderBg};
+  position: fixed;
+  width: 100%;
 `
 
 export const HeaderImage = styled.img`
