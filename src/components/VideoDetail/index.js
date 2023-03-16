@@ -19,31 +19,32 @@ import {
 const VideoDetail = props => {
   const {videoDetail} = props
   const {id, publishedAt, title, thumbnailUrl, viewCount, channel} = videoDetail
+  console.log(publishedAt)
   const {name, profileImageUrl} = channel
   const published = formatDistanceToNow(new Date(publishedAt))
   return (
-    <Link to={`/videos/${id}`}>
-      <VideoList>
+    <VideoList>
+      <Link to={`/videos/${id}`}>
         <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-        <ChannelContainer>
-          <ChannelImageCon>
-            <ChannelImage src={profileImageUrl} alt="channel logo" />
-          </ChannelImageCon>
-          <ChannelDetailsCon>
-            <ChannelTitle>{title}</ChannelTitle>
-            <ChannelViewCon>
-              <ChannelName>{name}</ChannelName>
-              <DotContainer>
-                <ChannelSpan>.</ChannelSpan>
-                <ChannelViews>{viewCount}</ChannelViews>
-                <ChannelSpan2>.</ChannelSpan2>
-                <ChannelViews>{published}</ChannelViews>
-              </DotContainer>
-            </ChannelViewCon>
-          </ChannelDetailsCon>
-        </ChannelContainer>
-      </VideoList>
-    </Link>
+      </Link>
+      <ChannelContainer>
+        <ChannelImageCon>
+          <ChannelImage src={profileImageUrl} alt="channel logo" />
+        </ChannelImageCon>
+        <ChannelDetailsCon>
+          <ChannelTitle>{title}</ChannelTitle>
+          <ChannelViewCon>
+            <ChannelName>{name}</ChannelName>
+            <DotContainer>
+              <ChannelSpan>.</ChannelSpan>
+              <ChannelViews>{viewCount}</ChannelViews>
+              <ChannelSpan2>.</ChannelSpan2>
+              <ChannelViews>{published}</ChannelViews>
+            </DotContainer>
+          </ChannelViewCon>
+        </ChannelDetailsCon>
+      </ChannelContainer>
+    </VideoList>
   )
 }
 export default VideoDetail

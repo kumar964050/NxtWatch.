@@ -11,13 +11,13 @@ const GamingDetails = props => {
   const {id, title, thumbnailUrl, viewCount} = gamingDetails
 
   return (
-    <Link to={`/videos/${id}`}>
-      <GamingLi>
+    <GamingLi>
+      <Link to={`/videos/${id}`}>
         <GamingImage src={thumbnailUrl} alt="video thumbnail" />
-        <GamingHeading>{title}</GamingHeading>
-        <GamingCount>{viewCount} Watching Worldwide</GamingCount>
-      </GamingLi>
-    </Link>
+      </Link>
+      <GamingHeading>{title}</GamingHeading>
+      <GamingCount>{viewCount} Watching Worldwide</GamingCount>
+    </GamingLi>
   )
 }
 export default GamingDetails

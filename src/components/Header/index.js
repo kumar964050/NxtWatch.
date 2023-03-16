@@ -55,7 +55,9 @@ class Header extends Component {
 
             return (
               <HeaderContainer HeaderBg={headerBackground}>
-                <HeaderImage src={headerLogo} alt="website logo" />
+                <Link to="/">
+                  <HeaderImage src={headerLogo} alt="website logo" />
+                </Link>
                 <HeaderThemeContainer>
                   <HeaderTheme
                     IconsColor={iconsColor}

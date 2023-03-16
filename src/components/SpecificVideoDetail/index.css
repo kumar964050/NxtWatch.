@@ -1,0 +1,12 @@
+.video-container {
+  padding-top: 75px;
+}
+
+.responsive-container {
+  width: 360px;
+  height: 201px;
+}
+.video-size {
+  height: 200px !important;
+  width: 360px !important;
+}

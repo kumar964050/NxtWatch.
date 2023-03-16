@@ -29,28 +29,28 @@ const TrendingVideo = props => {
   const {name, profileImageUrl} = channel
   const published = formatDistanceToNow(new Date(publishedAt))
   return (
-    <Link to={`/videos/${id}`}>
-      <TrendingList>
+    <TrendingList>
+      <Link to={`/videos/${id}`}>
         <TrendingImage src={thumbnailUrl} alt="video thumbnail" />
-        <TrendingContainer>
-          <TrendingImageCon>
-            <ChannelImage src={profileImageUrl} alt="channel logo" />
-          </TrendingImageCon>
-          <ChannelDetailsCon>
-            <ChannelTitle>{title}</ChannelTitle>
-            <ChannelViewCon>
-              <ChannelName>{name}</ChannelName>
-              <DotContainer>
-                <ChannelSpan>.</ChannelSpan>
-                <ChannelViews>{viewCount}</ChannelViews>
-                <ChannelSpan2>.</ChannelSpan2>
-                <ChannelViews>{published}</ChannelViews>
-              </DotContainer>
-            </ChannelViewCon>
-          </ChannelDetailsCon>
-        </TrendingContainer>
-      </TrendingList>
-    </Link>
+      </Link>
+      <TrendingContainer>
+        <TrendingImageCon>
+          <ChannelImage src={profileImageUrl} alt="channel logo" />
+        </TrendingImageCon>
+        <ChannelDetailsCon>
+          <ChannelTitle>{title}</ChannelTitle>
+          <ChannelViewCon>
+            <ChannelName>{name}</ChannelName>
+            <DotContainer>
+              <ChannelSpan>.</ChannelSpan>
+              <ChannelViews>{viewCount}</ChannelViews>
+              <ChannelSpan2>.</ChannelSpan2>
+              <ChannelViews>{published}</ChannelViews>
+            </DotContainer>
+          </ChannelViewCon>
+        </ChannelDetailsCon>
+      </TrendingContainer>
+    </TrendingList>
   )
 }
 export default TrendingVideo
