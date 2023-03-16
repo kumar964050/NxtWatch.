@@ -1,12 +1,23 @@
-.video-container {
-  padding-top: 75px;
+.responsive-container {
+  width: 100%;
+  height: 275px;
+  display: flex;
+  height: 275px;
 }
 
-.responsive-container {
-  width: 360px;
-  height: 201px;
+@media screen and (min-width: 576px) {
+  .responsive-container {
+    height: 400px;
+  }
 }
-.video-size {
-  height: 200px !important;
-  width: 360px !important;
+
+@media screen and (min-width: 768px) {
+  .responsive-container {
+    height: 500px;
+  }
+}
+
+.like-icon {
+  font-size: 20px;
+  margin-right: -6px;
 }

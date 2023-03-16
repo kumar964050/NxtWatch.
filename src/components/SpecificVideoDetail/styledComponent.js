@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 export const VideoDetailContainer = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 5%;
 `
-
+export const VideoResCon = styled.div`
+  padding-top: 75px;
+`
 export const VideoPlayer = styled.h1`
   font-family: 'Roboto';
   font-size: 17px;
@@ -11,8 +14,24 @@ export const VideoPlayer = styled.h1`
   padding-left: 4%;
   padding-right: 4%;
   margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 `
-export const VideoPublishCon = styled.div``
+export const VideoPublishCon = styled.div`
+  padding-left: 4%;
+  padding-right: 4%;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+`
 
 export const ChannelViews = styled.p`
   font-family: 'Roboto';
@@ -69,5 +88,74 @@ export const DotContainer = styled.div`
     height: 20px;
   }
   @media screen and (min-width: 768px) {
+  }
+`
+
+export const LikesContainer = styled.div`
+  display: flex;
+  color: #7e858e;
+`
+
+export const LikeIconCon = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-weight: 600;
+`
+
+export const LikeName = styled.p`
+  margin-left: 10px;
+`
+export const HorizontalLine = styled.hr`
+  color: #7e858e;
+`
+export const ProfileContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+`
+export const Profile = styled.img`
+  height: 50px;
+  margin-right: 10px;
+`
+export const SubscribesCon = styled.div`
+  color: #7e858e;
+`
+
+export const ChannelName = styled.p`
+  margin-top: 0px;
+  color: #7e858e;
+  font-size: 14px;
+  font-family: 'Roboto';
+`
+
+export const Subscribers = styled.p`
+  color: #7e858e;
+  margin-top: 0px;
+  font-size: 14px;
+  font-family: 'Roboto';
+`
+export const Description = styled.p`
+  color: #7e858e;
+  font-size: 14px;
+  font-family: 'Roboto';
+  @media screen and (min-width: 768px) {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+`
+export const LikeButton = styled.button`
+  background: transparent;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+`
+export const VideoDetailsContainer = styled.div`
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 74%;
+    margin-left: 20%;
   }
 `
