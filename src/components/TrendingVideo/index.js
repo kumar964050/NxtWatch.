@@ -1,9 +1,10 @@
 import {formatDistanceToNow} from 'date-fns'
+import {Link} from 'react-router-dom'
 import {
   TrendingList,
-  VideoImage,
-  ChannelContainer,
-  ChannelImageCon,
+  TrendingImage,
+  TrendingContainer,
+  TrendingImageCon,
   ChannelImage,
   ChannelDetailsCon,
   ChannelTitle,
@@ -28,26 +29,28 @@ const TrendingVideo = props => {
   const {name, profileImageUrl} = channel
   const published = formatDistanceToNow(new Date(publishedAt))
   return (
-    <TrendingList>
-      <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-      <ChannelContainer>
-        <ChannelImageCon>
-          <ChannelImage src={profileImageUrl} alt="channel logo" />
-        </ChannelImageCon>
-        <ChannelDetailsCon>
-          <ChannelTitle>{title}</ChannelTitle>
-          <ChannelViewCon>
-            <ChannelName>{name}</ChannelName>
-            <DotContainer>
-              <ChannelSpan>.</ChannelSpan>
-              <ChannelViews>{viewCount}</ChannelViews>
-              <ChannelSpan2>.</ChannelSpan2>
-              <ChannelViews>{published}</ChannelViews>
-            </DotContainer>
-          </ChannelViewCon>
-        </ChannelDetailsCon>
-      </ChannelContainer>
-    </TrendingList>
+    <Link to={`/videos/${id}`}>
+      <TrendingList>
+        <TrendingImage src={thumbnailUrl} alt="video thumbnail" />
+        <TrendingContainer>
+          <TrendingImageCon>
+            <ChannelImage src={profileImageUrl} alt="channel logo" />
+          </TrendingImageCon>
+          <ChannelDetailsCon>
+            <ChannelTitle>{title}</ChannelTitle>
+            <ChannelViewCon>
+              <ChannelName>{name}</ChannelName>
+              <DotContainer>
+                <ChannelSpan>.</ChannelSpan>
+                <ChannelViews>{viewCount}</ChannelViews>
+                <ChannelSpan2>.</ChannelSpan2>
+                <ChannelViews>{published}</ChannelViews>
+              </DotContainer>
+            </ChannelViewCon>
+          </ChannelDetailsCon>
+        </TrendingContainer>
+      </TrendingList>
+    </Link>
   )
 }
 export default TrendingVideo

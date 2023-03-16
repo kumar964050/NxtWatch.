@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const TrendingContainer = styled.div`
+export const GamingContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,12 +32,23 @@ export const TrendingHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 22px;
 `
-export const TrendingUl = styled.ul`
+export const GamingUl = styled.ul`
   list-style-type: none;
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  @media screen and (min-width: 576px) {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    width: 102%;
+  }
   @media screen and (min-width: 768px) {
     margin-left: 20%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
   }
 `

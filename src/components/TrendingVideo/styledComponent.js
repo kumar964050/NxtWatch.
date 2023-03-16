@@ -4,25 +4,28 @@ export const TrendingList = styled.li`
   height: 310px;
   @media screen and (min-width: 576px) {
     height: 300px;
-    width: 48%;
+    display: flex;
   }
   @media screen and (min-width: 768px) {
     height: 300px;
-    width: 32%;
+    width: 100%;
   }
 `
-export const VideoImage = styled.img`
+export const TrendingImage = styled.img`
   height: 200px;
   width: 100%;
 
   @media screen and (min-width: 576px) {
-    height: 45%;
+    height: 63%;
+    width: 60%;
+    margin-right: 16px;
   }
   @media screen and (min-width: 768px) {
-    height: 50%;
+    height: 75%;
+    width: 407px;
   }
 `
-export const ChannelContainer = styled.div`
+export const TrendingContainer = styled.div`
   height: 60px;
   display: flex;
   justify-content: flex-start;
@@ -33,14 +36,14 @@ export const ChannelContainer = styled.div`
     height: 45%;
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 0px;
   }
 `
-export const ChannelImageCon = styled.div`
+export const TrendingImageCon = styled.div`
   height: 40px;
   width: 32%;
   @media screen and (min-width: 576px) {
-    height: 45%;
-    width: 45%;
+    display: none;
   }
   @media screen and (min-width: 768px) {
     width: 40%;

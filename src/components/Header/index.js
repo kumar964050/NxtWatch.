@@ -109,12 +109,14 @@ class Header extends Component {
                   <NavNames>Trending</NavNames>
                 </ListItem>
               </Link>
-              <ListItem>
-                <ReactNavIcons>
-                  <SiYoutubegaming />
-                </ReactNavIcons>
-                <NavNames>Gaming</NavNames>
-              </ListItem>
+              <Link to="/gaming">
+                <ListItem>
+                  <ReactNavIcons>
+                    <SiYoutubegaming />
+                  </ReactNavIcons>
+                  <NavNames>Gaming</NavNames>
+                </ListItem>
+              </Link>
               <ListItem>
                 <ReactNavIcons>
                   <MdPlaylistAdd />

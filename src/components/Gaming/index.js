@@ -1,29 +1,28 @@
 import {Component} from 'react'
+import {SiYoutubegaming} from 'react-icons/si'
 import Cookies from 'js-cookie'
-import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import BannerSection from '../BannerSection'
-import TrendingVideo from '../TrendingVideo'
+import GamingDetails from '../GamingDetails'
 import {
-  TrendingContainer,
+  GamingContainer,
   TrendingHeading,
   FireContainer,
   FireImage,
-  TrendingUl,
+  GamingUl,
 } from './styledComponent'
-import './inde.css'
 
-class Trending extends Component {
+class Gaming extends Component {
   state = {
-    trendingList: [],
+    gamingList: [],
   }
 
   componentDidMount() {
-    this.getTrendingVideos()
+    this.getGamingVideos()
   }
 
-  getTrendingVideos = async () => {
-    const url = 'https://apis.ccbp.in/videos/trending'
+  getGamingVideos = async () => {
+    const url = 'https://apis.ccbp.in/videos/gaming'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
@@ -36,42 +35,36 @@ class Trending extends Component {
     if (response.ok === true) {
       const newData = data.videos.map(each => ({
         id: each.id,
-        publishedAt: each.published_at,
         title: each.title,
         thumbnailUrl: each.thumbnail_url,
         viewCount: each.view_count,
-        channel: {
-          name: each.channel.name,
-          profileImageUrl: each.channel.profile_image_url,
-        },
       }))
-      console.log(newData)
-      this.setState({trendingList: newData})
+      this.setState({gamingList: newData})
     }
   }
 
   render() {
-    const {trendingList} = this.state
+    const {gamingList} = this.state
     return (
       <>
         <Header />
-        <TrendingContainer>
+        <GamingContainer>
           <BannerSection />
           <FireContainer>
             <FireImage>
-              <HiFire className="fire-icon" />
+              <SiYoutubegaming className="fire-icon" />
             </FireImage>
-            <TrendingHeading>Trending</TrendingHeading>
+            <TrendingHeading>Gaming</TrendingHeading>
           </FireContainer>
-          <TrendingUl>
-            {trendingList.map(each => (
-              <TrendingVideo key={each.id} trendingVideo={each} />
+          <GamingUl>
+            {gamingList.map(each => (
+              <GamingDetails key={each.id} gamingDetails={each} />
             ))}
-          </TrendingUl>
-        </TrendingContainer>
+          </GamingUl>
+        </GamingContainer>
       </>
     )
   }
 }
 
-export default Trending
+export default Gaming

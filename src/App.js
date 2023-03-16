@@ -5,6 +5,8 @@ import ThemeContext from './context/ThemeContext'
 import UserDetailsRoute from './components/UserDetailsRoute'
 import Home from './components/Home'
 import Trending from './components/Trending'
+import Gaming from './components/Gaming'
+import SpecificVideoDetail from './components/SpecificVideoDetail'
 import './App.css'
 
 // Replace your code here
@@ -25,6 +27,12 @@ class App extends Component {
           <Route exact path="/login" component={LoginRoute} />
           <UserDetailsRoute exact path="/" component={Home} />
           <UserDetailsRoute exact path="/trending" component={Trending} />
+          <UserDetailsRoute exact path="/gaming" component={Gaming} />
+          <UserDetailsRoute
+            exact
+            path="/videos/:id"
+            component={SpecificVideoDetail}
+          />
         </Switch>
       </ThemeContext.Provider>
     )

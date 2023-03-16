@@ -1,4 +1,5 @@
 import {formatDistanceToNow} from 'date-fns'
+import {Link} from 'react-router-dom'
 import {
   VideoList,
   VideoImage,
@@ -21,26 +22,28 @@ const VideoDetail = props => {
   const {name, profileImageUrl} = channel
   const published = formatDistanceToNow(new Date(publishedAt))
   return (
-    <VideoList>
-      <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-      <ChannelContainer>
-        <ChannelImageCon>
-          <ChannelImage src={profileImageUrl} alt="channel logo" />
-        </ChannelImageCon>
-        <ChannelDetailsCon>
-          <ChannelTitle>{title}</ChannelTitle>
-          <ChannelViewCon>
-            <ChannelName>{name}</ChannelName>
-            <DotContainer>
-              <ChannelSpan>.</ChannelSpan>
-              <ChannelViews>{viewCount}</ChannelViews>
-              <ChannelSpan2>.</ChannelSpan2>
-              <ChannelViews>{published}</ChannelViews>
-            </DotContainer>
-          </ChannelViewCon>
-        </ChannelDetailsCon>
-      </ChannelContainer>
-    </VideoList>
+    <Link to={`/videos/${id}`}>
+      <VideoList>
+        <VideoImage src={thumbnailUrl} alt="video thumbnail" />
+        <ChannelContainer>
+          <ChannelImageCon>
+            <ChannelImage src={profileImageUrl} alt="channel logo" />
+          </ChannelImageCon>
+          <ChannelDetailsCon>
+            <ChannelTitle>{title}</ChannelTitle>
+            <ChannelViewCon>
+              <ChannelName>{name}</ChannelName>
+              <DotContainer>
+                <ChannelSpan>.</ChannelSpan>
+                <ChannelViews>{viewCount}</ChannelViews>
+                <ChannelSpan2>.</ChannelSpan2>
+                <ChannelViews>{published}</ChannelViews>
+              </DotContainer>
+            </ChannelViewCon>
+          </ChannelDetailsCon>
+        </ChannelContainer>
+      </VideoList>
+    </Link>
   )
 }
 export default VideoDetail

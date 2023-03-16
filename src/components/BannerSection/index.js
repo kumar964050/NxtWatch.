@@ -38,12 +38,14 @@ const BannerSection = () => (
           <NavNamesB>Trending</NavNamesB>
         </ListItemB>
       </Link>
-      <ListItemB>
-        <ReactNavIconsB>
-          <SiYoutubegaming />
-        </ReactNavIconsB>
-        <NavNamesB>Gaming</NavNamesB>
-      </ListItemB>
+      <Link to="/gaming">
+        <ListItemB>
+          <ReactNavIconsB>
+            <SiYoutubegaming />
+          </ReactNavIconsB>
+          <NavNamesB>Gaming</NavNamesB>
+        </ListItemB>
+      </Link>
       <ListItemB>
         <ReactNavIconsB>
           <MdPlaylistAdd />
