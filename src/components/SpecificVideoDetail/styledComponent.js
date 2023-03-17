@@ -101,6 +101,7 @@ export const LikeIconCon = styled.div`
   align-items: center;
   margin-right: 20px;
   font-weight: 600;
+  color: ${props => props.Like};
 `
 
 export const LikeName = styled.p`
@@ -112,6 +113,8 @@ export const HorizontalLine = styled.hr`
 export const ProfileContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
 `
 export const Profile = styled.img`
   height: 50px;
@@ -138,6 +141,8 @@ export const Description = styled.p`
   color: #7e858e;
   font-size: 14px;
   font-family: 'Roboto';
+  padding-left: 4%;
+  padding-right: 4%;
   @media screen and (min-width: 768px) {
     padding-left: 4%;
     padding-right: 4%;
@@ -151,6 +156,7 @@ export const LikeButton = styled.button`
   align-items: center;
   cursor: pointer;
   outline: none;
+  color: ${props => props.Like};
 `
 export const VideoDetailsContainer = styled.div`
   width: 100%;

@@ -16,12 +16,15 @@ export const ListItemB = styled.li`
     align-items: center;
     justify-content: flex-start;
     padding-left: 15%;
+    background: ${props => props.background};
   }
 `
 export const NavNamesB = styled.p`
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
+    color: ${props => props.NavElement};
+    font-weight: ${props => props.FontWeight};
   }
 `
 export const ReactNavIconsB = styled.div`
@@ -29,6 +32,7 @@ export const ReactNavIconsB = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     margin-right: 15%;
+    color: ${props => props.NavIcons};
   }
 `
 export const UnOrderedListConB = styled.div`
@@ -40,6 +44,7 @@ export const UnOrderedListConB = styled.div`
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
+    background-color: ${props => props.BannerBackground};
   }
 `
 export const FooterHeading = styled.h1`
@@ -48,6 +53,7 @@ export const FooterHeading = styled.h1`
     display: block;
     font-family: 'Roboto';
     font-size: 16px;
+    color: ${props => props.FooterDes};
   }
 `
 export const FooterImageCon = styled.div`
@@ -72,6 +78,7 @@ export const FooterDescription = styled.p`
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: 600;
+    color: ${props => props.FooterDes};
   }
 `
 export const FooterContainer = styled.div`

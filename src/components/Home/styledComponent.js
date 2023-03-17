@@ -66,6 +66,7 @@ export const SearchContainer = styled.div`
   padding-right: 5%;
   display: flex;
   align-items: center;
+  background-color: ${props => props.SearchConBackground};
   @media screen and (min-width: 576px) {
     background-size: cover;
   }
@@ -74,14 +75,16 @@ export const SearchContainer = styled.div`
   }
 `
 export const SearchInput = styled.input`
+  color: ${props => props.InputColor};
   height: 35px;
   width: 80%;
-  border: 1px solid;
+  border: 1px solid ${props => props.Border};
   outline: none;
   padding-left: 10px;
   font-family: 'Roboto';
   font-size: 14px;
   border-right: 0px;
+  background-color: ${props => props.SearchColor};
   @media screen and (min-width: 576px) {
     width: 66%;
   }
@@ -95,7 +98,8 @@ export const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid ${props => props.Border};
+  background-color: ${props => props.SearchButtonColor};
   @media screen and (min-width: 576px) {
     width: 15%;
   }
@@ -112,6 +116,8 @@ export const HomeVideosContainer = styled.div`
 export const VideoDetailUl = styled.ul`
   list-style-type: none;
   padding-left: 0px;
+  margin-top: 0px;
+  background-color: ${props => props.VideoUl};
   @media screen and (min-width: 576px) {
     padding-left: 5%;
     padding-right: 5%;

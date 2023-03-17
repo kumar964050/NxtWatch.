@@ -81,6 +81,11 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {darkTheme} = value
+          const searchContainer = darkTheme ? '#181818' : '#f9f9f9'
+          const searchButton = darkTheme ? '#313131' : '#f9f9f9'
+          const border = darkTheme ? '#313131' : '#94a3b8'
+          const inputColor = darkTheme ? '#ffffff' : '#000000'
+
           return (
             <>
               <Header />
@@ -112,18 +117,26 @@ class Home extends Component {
                       </PremiumContainer>
                     </HomeBanner>
                   )}
-                  <SearchContainer>
+                  <SearchContainer SearchConBackground={searchContainer}>
                     <SearchInput
+                      SearchColor={searchContainer}
+                      Border={border}
+                      InputColor={inputColor}
                       type="text"
                       value={searchInput}
                       onChange={this.changeSearchInput}
                       placeholder="Search"
                     />
-                    <SearchButton type="button" onClick={this.callTheServer}>
+                    <SearchButton
+                      SearchButtonColor={searchButton}
+                      Border={border}
+                      type="button"
+                      onClick={this.callTheServer}
+                    >
                       <BiSearch />
                     </SearchButton>
                   </SearchContainer>
-                  <VideoDetailUl>
+                  <VideoDetailUl VideoUl={searchContainer}>
                     {homeList.map(eachVideo => (
                       <VideoDetail key={eachVideo.id} videoDetail={eachVideo} />
                     ))}

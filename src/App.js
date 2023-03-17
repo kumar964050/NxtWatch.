@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import SpecificVideoDetail from './components/SpecificVideoDetail'
+import SavedVideos from './components/SavedVideos'
 import './App.css'
 
 // Replace your code here
@@ -32,6 +33,11 @@ class App extends Component {
             exact
             path="/videos/:id"
             component={SpecificVideoDetail}
+          />
+          <UserDetailsRoute
+            exact
+            path="/saved-videos"
+            component={SavedVideos}
           />
         </Switch>
       </ThemeContext.Provider>

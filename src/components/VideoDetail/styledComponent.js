@@ -7,7 +7,7 @@ export const VideoList = styled.li`
     width: 48%;
   }
   @media screen and (min-width: 768px) {
-    height: 300px;
+    height: 327px;
     width: 32%;
   }
 `
@@ -67,6 +67,7 @@ export const ChannelTitle = styled.p`
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 0px;
+  color: ${props => props.VideoDescription};
   @media screen and (min-width: 576px) {
     font-size: 12px;
   }

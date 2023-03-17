@@ -42,6 +42,9 @@ class SpecificVideoDetail extends Component {
     videoDetail: {},
     isPlaying: false,
     videoState: videoApiStatus.initial,
+    like: false,
+    disLike: false,
+    save: false,
   }
 
   componentDidMount() {
@@ -100,6 +103,30 @@ class SpecificVideoDetail extends Component {
     </div>
   )
 
+  changeLikeState = () => {
+    this.setState(prevState => ({
+      like: !prevState.like,
+      disLike: false,
+      save: false,
+    }))
+  }
+
+  changeDisLikeState = () => {
+    this.setState(prevState => ({
+      like: false,
+      disLike: !prevState.disLike,
+      save: false,
+    }))
+  }
+
+  changeSaveState = () => {
+    this.setState(prevState => ({
+      like: false,
+      disLike: false,
+      save: !prevState.save,
+    }))
+  }
+
   renderSuccess = () => {
     const {videoDetail, isPlaying} = this.state
     const {
@@ -116,6 +143,10 @@ class SpecificVideoDetail extends Component {
     const {name, subscriberCount, profileImageUrl} = channel
     const control = true
     const playing = true
+    const {like, disLike, save} = this.state
+    const likeColor = like ? '#2563eb' : '#64748b'
+    const disLikeColor = disLike ? '#2563eb' : '#64748b'
+    const saveColor = save ? '#2563eb' : '#64748b'
 
     return (
       <VideoResCon>
@@ -138,20 +169,23 @@ class SpecificVideoDetail extends Component {
               <ChannelViews>{publishedAt}</ChannelViews>
             </DotContainer>
             <LikesContainer>
-              <LikeIconCon>
-                <LikeButton>
+              <LikeIconCon Like={likeColor}>
+                <LikeButton Like={likeColor} onClick={this.changeLikeState}>
                   <BiLike className="like-icon" />
                 </LikeButton>
                 <LikeName>Like</LikeName>
               </LikeIconCon>
-              <LikeIconCon>
-                <LikeButton>
+              <LikeIconCon Like={disLikeColor}>
+                <LikeButton
+                  Like={disLikeColor}
+                  onClick={this.changeDisLikeState}
+                >
                   <BiDislike className="like-icon" />
                 </LikeButton>
                 <LikeName>Dislike</LikeName>
               </LikeIconCon>
-              <LikeIconCon>
-                <LikeButton>
+              <LikeIconCon Like={saveColor}>
+                <LikeButton Like={saveColor} onClick={this.changeSaveState}>
                   <MdPlaylistAdd className="like-icon" />
                 </LikeButton>
                 <LikeName>Save</LikeName>
