@@ -56,7 +56,7 @@ class Trending extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {darkTheme} = value
-          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          const searchContainer = darkTheme ? '#0f0f0f' : '#f9f9f9'
           const trendingBackground = darkTheme ? '#181818' : ' #f1f1f1'
           const fireBackground = darkTheme ? '#000000' : '#cbd5e1'
           const inputColor = darkTheme ? '#ffffff' : '#000000'

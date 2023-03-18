@@ -7,7 +7,6 @@ import ThemeContext from '../../context/ThemeContext'
 import VideoDetail from '../VideoDetail'
 import {
   HomeContainer,
-  HomeDetailContainer,
   HomeBanner,
   PremiumContainer,
   PremiumDetails,
@@ -15,7 +14,6 @@ import {
   HomeDescription,
   HomeButton,
   CrossMarkCon,
-  VideosUl,
   SearchContainer,
   SearchInput,
   SearchButton,
@@ -81,7 +79,7 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {darkTheme} = value
-          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          const searchContainer = darkTheme ? '#0f0f0f' : '#f9f9f9'
           const searchButton = darkTheme ? '#313131' : '#f9f9f9'
           const border = darkTheme ? '#313131' : '#94a3b8'
           const inputColor = darkTheme ? '#ffffff' : '#000000'
@@ -122,7 +120,7 @@ class Home extends Component {
                       SearchColor={searchContainer}
                       Border={border}
                       InputColor={inputColor}
-                      type="text"
+                      type="search"
                       value={searchInput}
                       onChange={this.changeSearchInput}
                       placeholder="Search"

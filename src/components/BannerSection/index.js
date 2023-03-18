@@ -1,7 +1,4 @@
 import {Link, withRouter} from 'react-router-dom'
-import {FaMoon} from 'react-icons/fa'
-import {GiHamburgerMenu} from 'react-icons/gi'
-import {FiLogOut, FiSun} from 'react-icons/fi'
 import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'

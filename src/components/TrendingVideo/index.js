@@ -28,7 +28,6 @@ const TrendingVideo = props => {
     channel,
   } = trendingVideo
   const {name, profileImageUrl} = channel
-  const published = formatDistanceToNow(new Date(publishedAt))
   return (
     <ThemeContext.Consumer>
       {value => {
@@ -54,7 +53,7 @@ const TrendingVideo = props => {
                     <ChannelSpan>.</ChannelSpan>
                     <ChannelViews>{viewCount}</ChannelViews>
                     <ChannelSpan2>.</ChannelSpan2>
-                    <ChannelViews>{published}</ChannelViews>
+                    <ChannelViews>{publishedAt}</ChannelViews>
                   </DotContainer>
                 </ChannelViewCon>
               </ChannelDetailsCon>

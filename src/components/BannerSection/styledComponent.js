@@ -15,7 +15,7 @@ export const ListItemB = styled.li`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 15%;
+    padding-left: 10%;
     background: ${props => props.background};
   }
 `
@@ -77,7 +77,6 @@ export const FooterDescription = styled.p`
     display: block;
     font-family: 'Roboto';
     font-size: 16px;
-    font-weight: 600;
     color: ${props => props.FooterDes};
   }
 `
@@ -85,7 +84,8 @@ export const FooterContainer = styled.div`
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
-    padding-left: 15%;
+    padding-left: 8%;
     height: 175px;
+    padding-right: 8%;
   }
 `

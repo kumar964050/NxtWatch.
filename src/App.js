@@ -14,16 +14,34 @@ import './App.css'
 class App extends Component {
   state = {
     darkTheme: false,
+    savedVideos: [],
   }
 
   changeTheme = () => {
     this.setState(prevState => ({darkTheme: !prevState.darkTheme}))
   }
 
+  savedVideoList = data => {
+    const {savedVideos} = this.state
+    const checkData = savedVideos.filter(each => each.id === data.id)
+    if (checkData.length > 0) {
+      this.setState({savedVideos})
+    } else {
+      this.setState({savedVideos: [...savedVideos, data]})
+    }
+  }
+
   render() {
-    const {darkTheme} = this.state
+    const {darkTheme, savedVideos} = this.state
     return (
-      <ThemeContext.Provider value={{darkTheme, changeTheme: this.changeTheme}}>
+      <ThemeContext.Provider
+        value={{
+          darkTheme,
+          changeTheme: this.changeTheme,
+          savedVideos,
+          savedVideoList: this.savedVideoList,
+        }}
+      >
         <Switch>
           <Route exact path="/login" component={LoginRoute} />
           <UserDetailsRoute exact path="/" component={Home} />

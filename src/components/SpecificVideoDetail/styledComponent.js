@@ -2,18 +2,24 @@ import styled from 'styled-components'
 
 export const VideoDetailContainer = styled.div`
   min-height: 100vh;
-  padding-bottom: 5%;
 `
 export const VideoResCon = styled.div`
   padding-top: 75px;
+  padding-bottom: 25px;
+  background: ${props => props.videoDetailBackground};
+
+  @media screen and (min-width: 768px) {
+    background: ${props => props.VideoBackground};
+  }
 `
 export const VideoPlayer = styled.h1`
   font-family: 'Roboto';
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   padding-left: 4%;
   padding-right: 4%;
   margin-top: 20px;
+  color: ${props => props.VideoPlayer};
   @media screen and (min-width: 768px) {
     padding-left: 0px;
     padding-right: 0px;
@@ -38,7 +44,7 @@ export const ChannelViews = styled.p`
   font-size: 14px;
   color: #94a3b8;
   @media screen and (min-width: 576px) {
-    font-size: 12px;
+    font-size: 14px;
   }
   @media screen and (min-width: 768px) {
   }
@@ -85,7 +91,7 @@ export const ChannelSpan2 = styled.p`
 export const DotContainer = styled.div`
   display: flex;
   @media screen and (min-width: 576px) {
-    height: 20px;
+    height: 40px;
   }
   @media screen and (min-width: 768px) {
   }
@@ -115,6 +121,9 @@ export const ProfileContainer = styled.div`
   margin-top: 20px;
   padding-left: 4%;
   padding-right: 4%;
+  @media screen and (min-width: 768px) {
+    padding-left: 0px;
+  }
 `
 export const Profile = styled.img`
   height: 50px;
@@ -129,6 +138,7 @@ export const ChannelName = styled.p`
   color: #7e858e;
   font-size: 14px;
   font-family: 'Roboto';
+  color: ${props => props.VideoPlayer};
 `
 
 export const Subscribers = styled.p`
@@ -139,14 +149,17 @@ export const Subscribers = styled.p`
 `
 export const Description = styled.p`
   color: #7e858e;
-  font-size: 14px;
+  font-size: 11px;
   font-family: 'Roboto';
   padding-left: 4%;
   padding-right: 4%;
   margin-bottom: 0px;
+  color: ${props => props.VideoPlayer};
+  @media screen and (min-width: 576px) {
+    font-size: 13px;
+  }
   @media screen and (min-width: 768px) {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 60px;
   }
 `
 export const LikeButton = styled.button`
@@ -164,5 +177,8 @@ export const VideoDetailsContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 74%;
     margin-left: 20%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 3%;
   }
 `

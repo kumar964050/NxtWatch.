@@ -120,21 +120,11 @@ class SpecificVideoDetail extends Component {
     }))
   }
 
-  changeSaveState = () => {
-    this.setState(prevState => ({
-      like: false,
-      disLike: false,
-      save: !prevState.save,
-    }))
-  }
-
   renderSuccess = () => {
-    const {videoDetail, isPlaying} = this.state
+    const {videoDetail} = this.state
     const {
-      id,
       publishedAt,
       title,
-      thumbnailUrl,
       viewCount,
       videoUrl,
       channel,
@@ -145,19 +135,34 @@ class SpecificVideoDetail extends Component {
     const control = true
     const playing = true
     const {like, disLike, save} = this.state
-    const likeColor = like ? '#2563eb' : '#64748b'
-    const disLikeColor = disLike ? '#2563eb' : '#64748b'
-    const saveColor = save ? '#2563eb' : '#64748b'
+    const likeColor = like ? '#2563eb' : '#94a3b8'
+    const disLikeColor = disLike ? '#2563eb' : '#94a3b8'
+    const saveColor = save ? '#2563eb' : '#94a3b8'
 
     return (
       <ThemeContext.Consumer>
         {value => {
-          const {darkTheme} = value
-          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          const {darkTheme, savedVideoList} = value
+          const searchContainer = darkTheme ? '#0f0f0f' : '#f9f9f9'
+          const videoBackground = darkTheme ? '#0f0f0f' : '#f9f9f9'
+          const videoDescription = darkTheme ? '#ffffff' : '#000000'
+
+          const changeLikeState = () => {
+            this.setState(prevState => ({
+              like: false,
+              disLike: false,
+              save: !prevState.save,
+            }))
+            savedVideoList(videoDetail)
+          }
+
           return (
-            <VideoResCon>
+            <VideoResCon
+              videoDetailBackground={searchContainer}
+              VideoBackground={videoBackground}
+            >
               <BannerSection />
-              <VideoDetailsContainer videoDetailBackground={searchContainer}>
+              <VideoDetailsContainer>
                 <div className="responsive-container">
                   <ReactPlayer
                     url={videoUrl}
@@ -167,7 +172,9 @@ class SpecificVideoDetail extends Component {
                     height="100%"
                   />
                 </div>
-                <VideoPlayer>{title}</VideoPlayer>
+                <VideoPlayer VideoPlayer={videoDescription}>
+                  {title}
+                </VideoPlayer>
                 <VideoPublishCon>
                   <DotContainer>
                     <ChannelViews>{viewCount} views</ChannelViews>
@@ -194,10 +201,7 @@ class SpecificVideoDetail extends Component {
                       <LikeName>Dislike</LikeName>
                     </LikeIconCon>
                     <LikeIconCon Like={saveColor}>
-                      <LikeButton
-                        Like={saveColor}
-                        onClick={this.changeSaveState}
-                      >
+                      <LikeButton Like={saveColor} onClick={changeLikeState}>
                         <MdPlaylistAdd className="like-icon" />
                       </LikeButton>
                       <LikeName>Save</LikeName>
@@ -208,11 +212,15 @@ class SpecificVideoDetail extends Component {
                 <ProfileContainer>
                   <Profile src={profileImageUrl} alt="channel logo" />
                   <SubscribesCon>
-                    <ChannelName>{name}</ChannelName>
+                    <ChannelName VideoPlayer={videoDescription}>
+                      {name}
+                    </ChannelName>
                     <Subscribers>{subscriberCount} subscribers</Subscribers>
                   </SubscribesCon>
                 </ProfileContainer>
-                <Description>{description}</Description>
+                <Description VideoPlayer={videoDescription}>
+                  {description}
+                </Description>
               </VideoDetailsContainer>
             </VideoResCon>
           )

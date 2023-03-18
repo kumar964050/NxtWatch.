@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Popup from 'reactjs-popup'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut, FiSun} from 'react-icons/fi'
@@ -36,7 +35,7 @@ class Header extends Component {
   }
 
   render() {
-    const {hamburger, themeImage} = this.state
+    const {hamburger} = this.state
     return (
       <>
         <ThemeContext.Consumer>
@@ -119,12 +118,14 @@ class Header extends Component {
                   <NavNames>Gaming</NavNames>
                 </ListItem>
               </Link>
-              <ListItem>
-                <ReactNavIcons>
-                  <MdPlaylistAdd />
-                </ReactNavIcons>
-                <NavNames>Saved Videos</NavNames>
-              </ListItem>
+              <Link to="/saved-videos">
+                <ListItem>
+                  <ReactNavIcons>
+                    <MdPlaylistAdd />
+                  </ReactNavIcons>
+                  <NavNames>Saved Videos</NavNames>
+                </ListItem>
+              </Link>
             </UnorderedList>
           </UnOrderedListCon>
         )}
