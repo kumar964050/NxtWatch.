@@ -81,7 +81,7 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {darkTheme} = value
-          const searchContainer = darkTheme ? '#181818' : '#f9f9f9'
+          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
           const searchButton = darkTheme ? '#313131' : '#f9f9f9'
           const border = darkTheme ? '#313131' : '#94a3b8'
           const inputColor = darkTheme ? '#ffffff' : '#000000'
@@ -89,7 +89,7 @@ class Home extends Component {
           return (
             <>
               <Header />
-              <HomeContainer>
+              <HomeContainer HomeBackground={searchContainer}>
                 <BannerSection />
                 <HomeVideosContainer>
                   {premium && (

@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import BannerSection from '../BannerSection'
 import GamingDetails from '../GamingDetails'
+import ThemeContext from '../../context/ThemeContext'
 import {
   GamingContainer,
   TrendingHeading,
@@ -46,23 +47,36 @@ class Gaming extends Component {
   render() {
     const {gamingList} = this.state
     return (
-      <>
-        <Header />
-        <GamingContainer>
-          <BannerSection />
-          <FireContainer>
-            <FireImage>
-              <SiYoutubegaming className="fire-icon" />
-            </FireImage>
-            <TrendingHeading>Gaming</TrendingHeading>
-          </FireContainer>
-          <GamingUl>
-            {gamingList.map(each => (
-              <GamingDetails key={each.id} gamingDetails={each} />
-            ))}
-          </GamingUl>
-        </GamingContainer>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {darkTheme} = value
+          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          const trendingBackground = darkTheme ? '#181818' : ' #f1f1f1'
+          const fireBackground = darkTheme ? '#000000' : '#cbd5e1'
+          const inputColor = darkTheme ? '#ffffff' : '#000000'
+          return (
+            <>
+              <Header />
+              <GamingContainer GamingBackground={searchContainer}>
+                <BannerSection />
+                <FireContainer FireBackground={trendingBackground}>
+                  <FireImage FireImageBackground={fireBackground}>
+                    <SiYoutubegaming className="fire-icon" />
+                  </FireImage>
+                  <TrendingHeading GamingName={inputColor}>
+                    Gaming
+                  </TrendingHeading>
+                </FireContainer>
+                <GamingUl>
+                  {gamingList.map(each => (
+                    <GamingDetails key={each.id} gamingDetails={each} />
+                  ))}
+                </GamingUl>
+              </GamingContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

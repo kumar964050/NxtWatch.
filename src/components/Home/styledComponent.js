@@ -4,6 +4,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   display: flex;
   padding-top: 75px;
+  background: ${props => props.HomeBackground};
 `
 
 export const HomeDetailContainer = styled.div`
@@ -13,12 +14,16 @@ export const HomeBanner = styled.div`
   height: 230px;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 15px;
+  padding-top: 8%;
   background-image: url(${props => props.ImageUrl});
   background-size: cover;
 
   @media screen and (min-width: 576px) {
     padding-left: 5%;
+    padding-top: 7%;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 4%;
   }
 `
 export const PremiumContainer = styled.div`
@@ -100,6 +105,8 @@ export const SearchButton = styled.button`
   align-items: center;
   border: 1px solid ${props => props.Border};
   background-color: ${props => props.SearchButtonColor};
+  cursor: pointer;
+  outline: none;
   @media screen and (min-width: 576px) {
     width: 15%;
   }
@@ -109,6 +116,8 @@ export const SearchButton = styled.button`
 `
 export const HomeVideosContainer = styled.div`
   width: 100%;
+  min-height: 100vh;
+  background: ${props => props.HomeBackground};
   @media screen and (min-width: 768px) {
     margin-left: 20%;
   }

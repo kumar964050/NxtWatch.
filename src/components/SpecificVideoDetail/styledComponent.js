@@ -143,6 +143,7 @@ export const Description = styled.p`
   font-family: 'Roboto';
   padding-left: 4%;
   padding-right: 4%;
+  margin-bottom: 0px;
   @media screen and (min-width: 768px) {
     padding-left: 4%;
     padding-right: 4%;

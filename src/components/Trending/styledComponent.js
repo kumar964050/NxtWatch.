@@ -5,6 +5,8 @@ export const TrendingContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 75px;
+  min-height: 100vh;
+  background: ${props => props.TrendingBackground};
 `
 
 export const FireContainer = styled.div`
@@ -14,8 +16,11 @@ export const FireContainer = styled.div`
   align-items: center;
   background: grey;
   padding-left: 5%;
+  background: ${props => props.FireBackground};
   @media screen and (min-width: 768px) {
     margin-left: 20%;
+    height: 130px;
+    width: 80%;
   }
 `
 export const FireImage = styled.div`
@@ -27,17 +32,30 @@ export const FireImage = styled.div`
   align-items: center;
   border-radius: 50%;
   margin-right: 15px;
+  background: ${props => props.FireImageBackground};
+  @media screen and (min-width: 768px) {
+    height: 75px;
+    width: 75px;
+  }
 `
 export const TrendingHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 22px;
+  color: ${props => props.TrendingHeading};
+  @media screen and (min-width: 768px) {
+    font-size: 33px;
+  }
 `
 export const TrendingUl = styled.ul`
   list-style-type: none;
-  padding-left: 5%;
-  padding-right: 5%;
   padding-top: 5%;
+  padding-left: 0px;
+  @media screen and (min-width: 576px) {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
   @media screen and (min-width: 768px) {
     margin-left: 20%;
+    width: 80%;
   }
 `

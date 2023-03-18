@@ -16,9 +16,8 @@ export const TrendingImage = styled.img`
   width: 100%;
 
   @media screen and (min-width: 576px) {
-    height: 63%;
-    width: 60%;
     margin-right: 16px;
+    width: 350px;
   }
   @media screen and (min-width: 768px) {
     height: 75%;
@@ -41,7 +40,7 @@ export const TrendingContainer = styled.div`
 `
 export const TrendingImageCon = styled.div`
   height: 40px;
-  width: 32%;
+  margin-right: 12px;
   @media screen and (min-width: 576px) {
     display: none;
   }
@@ -70,11 +69,12 @@ export const ChannelTitle = styled.p`
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 0px;
+  color: ${props => props.VideoDescription};
   @media screen and (min-width: 576px) {
-    font-size: 12px;
+    font-size: 15px;
   }
   @media screen and (min-width: 768px) {
-    font-size: 15px;
+    font-size: 20px;
   }
 `
 export const ChannelName = styled.p`
@@ -87,6 +87,7 @@ export const ChannelName = styled.p`
     margin-bottom: 0px;
   }
   @media screen and (min-width: 768px) {
+    font-size: 15px;
   }
 `
 export const ChannelViews = styled.p`
@@ -97,6 +98,7 @@ export const ChannelViews = styled.p`
     font-size: 12px;
   }
   @media screen and (min-width: 768px) {
+    font-size: 15px;
   }
 `
 export const ChannelViewCon = styled.div`

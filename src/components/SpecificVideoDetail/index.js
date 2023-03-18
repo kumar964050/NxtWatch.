@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import BannerSection from '../BannerSection'
+import ThemeContext from '../../context/ThemeContext'
 import {
   VideoDetailContainer,
   VideoPlayer,
@@ -149,60 +150,74 @@ class SpecificVideoDetail extends Component {
     const saveColor = save ? '#2563eb' : '#64748b'
 
     return (
-      <VideoResCon>
-        <BannerSection />
-        <VideoDetailsContainer>
-          <div className="responsive-container">
-            <ReactPlayer
-              url={videoUrl}
-              controls={control}
-              playing={playing}
-              width="100%"
-              height="100%"
-            />
-          </div>
-          <VideoPlayer>{title}</VideoPlayer>
-          <VideoPublishCon>
-            <DotContainer>
-              <ChannelViews>{viewCount} views</ChannelViews>
-              <ChannelSpan2>.</ChannelSpan2>
-              <ChannelViews>{publishedAt}</ChannelViews>
-            </DotContainer>
-            <LikesContainer>
-              <LikeIconCon Like={likeColor}>
-                <LikeButton Like={likeColor} onClick={this.changeLikeState}>
-                  <BiLike className="like-icon" />
-                </LikeButton>
-                <LikeName>Like</LikeName>
-              </LikeIconCon>
-              <LikeIconCon Like={disLikeColor}>
-                <LikeButton
-                  Like={disLikeColor}
-                  onClick={this.changeDisLikeState}
-                >
-                  <BiDislike className="like-icon" />
-                </LikeButton>
-                <LikeName>Dislike</LikeName>
-              </LikeIconCon>
-              <LikeIconCon Like={saveColor}>
-                <LikeButton Like={saveColor} onClick={this.changeSaveState}>
-                  <MdPlaylistAdd className="like-icon" />
-                </LikeButton>
-                <LikeName>Save</LikeName>
-              </LikeIconCon>
-            </LikesContainer>
-          </VideoPublishCon>
-          <HorizontalLine />
-          <ProfileContainer>
-            <Profile src={profileImageUrl} alt="channel logo" />
-            <SubscribesCon>
-              <ChannelName>{name}</ChannelName>
-              <Subscribers>{subscriberCount} subscribers</Subscribers>
-            </SubscribesCon>
-          </ProfileContainer>
-          <Description>{description}</Description>
-        </VideoDetailsContainer>
-      </VideoResCon>
+      <ThemeContext.Consumer>
+        {value => {
+          const {darkTheme} = value
+          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          return (
+            <VideoResCon>
+              <BannerSection />
+              <VideoDetailsContainer videoDetailBackground={searchContainer}>
+                <div className="responsive-container">
+                  <ReactPlayer
+                    url={videoUrl}
+                    controls={control}
+                    playing={playing}
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <VideoPlayer>{title}</VideoPlayer>
+                <VideoPublishCon>
+                  <DotContainer>
+                    <ChannelViews>{viewCount} views</ChannelViews>
+                    <ChannelSpan2>.</ChannelSpan2>
+                    <ChannelViews>{publishedAt}</ChannelViews>
+                  </DotContainer>
+                  <LikesContainer>
+                    <LikeIconCon Like={likeColor}>
+                      <LikeButton
+                        Like={likeColor}
+                        onClick={this.changeLikeState}
+                      >
+                        <BiLike className="like-icon" />
+                      </LikeButton>
+                      <LikeName>Like</LikeName>
+                    </LikeIconCon>
+                    <LikeIconCon Like={disLikeColor}>
+                      <LikeButton
+                        Like={disLikeColor}
+                        onClick={this.changeDisLikeState}
+                      >
+                        <BiDislike className="like-icon" />
+                      </LikeButton>
+                      <LikeName>Dislike</LikeName>
+                    </LikeIconCon>
+                    <LikeIconCon Like={saveColor}>
+                      <LikeButton
+                        Like={saveColor}
+                        onClick={this.changeSaveState}
+                      >
+                        <MdPlaylistAdd className="like-icon" />
+                      </LikeButton>
+                      <LikeName>Save</LikeName>
+                    </LikeIconCon>
+                  </LikesContainer>
+                </VideoPublishCon>
+                <HorizontalLine />
+                <ProfileContainer>
+                  <Profile src={profileImageUrl} alt="channel logo" />
+                  <SubscribesCon>
+                    <ChannelName>{name}</ChannelName>
+                    <Subscribers>{subscriberCount} subscribers</Subscribers>
+                  </SubscribesCon>
+                </ProfileContainer>
+                <Description>{description}</Description>
+              </VideoDetailsContainer>
+            </VideoResCon>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 

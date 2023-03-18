@@ -50,7 +50,7 @@ class Header extends Component {
               ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
               : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
-            const headerBackground = darkTheme ? '#181818' : '#f9f9f9'
+            const headerBackground = darkTheme ? '#212121' : '#ffffff'
             const iconsColor = darkTheme ? '#ffffff' : '#0f0f0f'
 
             return (

@@ -40,10 +40,8 @@ export const ChannelImageCon = styled.div`
   margin-right: 12px;
   @media screen and (min-width: 576px) {
     height: 45%;
-    width: 45%;
   }
   @media screen and (min-width: 768px) {
-    width: 40%;
   }
 `
 

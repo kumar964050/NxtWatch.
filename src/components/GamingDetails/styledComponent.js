@@ -8,25 +8,22 @@ export const GamingLi = styled.li`
   @media screen and (min-width: 576px) {
     width: 31%;
   }
-  @media screen and (min-width: 576px) {
-    width: 23%;
+  @media screen and (min-width: 768px) {
   }
 `
 
 export const GamingImage = styled.img`
-  height: 165px;
+  height: 74%;
+  width: 100%;
   @media screen and (min-width: 576px) {
-    width: 105%;
-    height: 250px;
   }
   @media screen and (min-width: 768px) {
-    width: 100%;
-    height: 330px;
   }
 `
 export const GamingHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 12px;
+  color: ${props => props.GamingTitle};
   @media screen and (min-width: 576px) {
     font-size: 18px;
   }
@@ -34,6 +31,7 @@ export const GamingHeading = styled.h1`
 export const GamingCount = styled.p`
   font-family: 'Roboto';
   font-size: 12px;
+  color: #94a3b8;
   @media screen and (min-width: 576px) {
     font-size: 14px;
   }

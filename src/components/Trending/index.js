@@ -4,6 +4,7 @@ import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import BannerSection from '../BannerSection'
 import TrendingVideo from '../TrendingVideo'
+import ThemeContext from '../../context/ThemeContext'
 import {
   TrendingContainer,
   TrendingHeading,
@@ -45,7 +46,6 @@ class Trending extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
       }))
-      console.log(newData)
       this.setState({trendingList: newData})
     }
   }
@@ -53,23 +53,37 @@ class Trending extends Component {
   render() {
     const {trendingList} = this.state
     return (
-      <>
-        <Header />
-        <TrendingContainer>
-          <BannerSection />
-          <FireContainer>
-            <FireImage>
-              <HiFire className="fire-icon" />
-            </FireImage>
-            <TrendingHeading>Trending</TrendingHeading>
-          </FireContainer>
-          <TrendingUl>
-            {trendingList.map(each => (
-              <TrendingVideo key={each.id} trendingVideo={each} />
-            ))}
-          </TrendingUl>
-        </TrendingContainer>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {darkTheme} = value
+          const searchContainer = darkTheme ? '#000000' : '#f9f9f9'
+          const trendingBackground = darkTheme ? '#181818' : ' #f1f1f1'
+          const fireBackground = darkTheme ? '#000000' : '#cbd5e1'
+          const inputColor = darkTheme ? '#ffffff' : '#000000'
+
+          return (
+            <>
+              <Header />
+              <TrendingContainer TrendingBackground={searchContainer}>
+                <BannerSection />
+                <FireContainer FireBackground={trendingBackground}>
+                  <FireImage FireImageBackground={fireBackground}>
+                    <HiFire className="fire-icon" />
+                  </FireImage>
+                  <TrendingHeading TrendingHeading={inputColor}>
+                    Trending
+                  </TrendingHeading>
+                </FireContainer>
+                <TrendingUl>
+                  {trendingList.map(each => (
+                    <TrendingVideo key={each.id} trendingVideo={each} />
+                  ))}
+                </TrendingUl>
+              </TrendingContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }
