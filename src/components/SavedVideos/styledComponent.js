@@ -59,3 +59,45 @@ export const TrendingUl = styled.ul`
     width: 80%;
   }
 `
+export const NoSavedVideos = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    margin-left: 20%;
+    width: 80%;
+  }
+`
+export const SavedVideosHeading = styled.h1`
+  font-family: 'Roboto';
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  color: ${props => props.SavedColor};
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
+`
+
+export const SavedVideosParagraph = styled.p`
+  font-family: 'Roboto';
+  text-align: center;
+  font-size: 16px;
+  margin-top: 15px;
+  color: ${props => props.SavedColor};
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+`
+export const SavedImage = styled.img`
+  width: 80%;
+  height: 40%;
+  @media screen and (min-width: 576px) {
+    width: 54%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 45%;
+  }
+`

@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Popup from 'reactjs-popup'
 import {Link} from 'react-router-dom'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -21,8 +22,14 @@ import {
   UnOrderedListCon,
   AccountProfile,
   LogoutMdButton,
+  PopupDiv,
+  LogoutDescription,
+  CancelButton,
+  ConfirmButton,
+  LogoutButtons,
 } from './styledComponent'
 import ThemeContext from '../../context/ThemeContext'
+import 'reactjs-popup/dist/index.css'
 import './index.css'
 
 class Header extends Component {
@@ -32,6 +39,11 @@ class Header extends Component {
 
   openHamburger = () => {
     this.setState(prevState => ({hamburger: !prevState.hamburger}))
+  }
+
+  confirmButton = () => {
+    const {history} = this.props
+    history.replace('/login')
   }
 
   render() {
@@ -81,10 +93,35 @@ class Header extends Component {
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                     alt="profile"
                   />
-                  <LogoutButton IconsColor={iconsColor}>
-                    <FiLogOut className="dark-theme" />
-                  </LogoutButton>
-                  <LogoutMdButton>Logout</LogoutMdButton>
+
+                  <Popup
+                    modal
+                    trigger={
+                      <button type="button" className="trigger-button">
+                        <LogoutButton IconsColor={iconsColor}>
+                          <FiLogOut className="dark-theme" />
+                        </LogoutButton>
+                        <LogoutMdButton>Logout</LogoutMdButton>
+                      </button>
+                    }
+                  >
+                    <PopupDiv popupBackground={headerBackground}>
+                      <LogoutDescription IconsColor={iconsColor}>
+                        Are you sure you want logout?
+                      </LogoutDescription>
+                      <LogoutButtons>
+                        <CancelButton type="button" onClick={this.cancelButton}>
+                          Cancel
+                        </CancelButton>
+                        <ConfirmButton
+                          type="button"
+                          onClick={this.confirmButton}
+                        >
+                          Confirm
+                        </ConfirmButton>
+                      </LogoutButtons>
+                    </PopupDiv>
+                  </Popup>
                 </HeaderThemeContainer>
               </HeaderContainer>
             )

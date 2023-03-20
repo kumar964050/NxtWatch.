@@ -108,5 +108,66 @@ export const LogoutMdButton = styled.button`
   display: none;
   @media screen and (min-width: 768px) {
     display: inline-block;
+    cursor: pointer;
+    outline: none;
+  }
+`
+export const PopupDiv = styled.div`
+  background: #ffffff;
+  width: 270px;
+  height: 150px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${props => props.popupBackground};
+  @media screen and (min-width: 768px) {
+    width: 330px;
+  }
+`
+
+export const LogoutDescription = styled.p`
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin-bottom: 32px;
+  margin-top: 34px;
+  color: ${props => props.IconsColor};
+`
+export const CancelButton = styled.button`
+  height: 40px;
+  width: 75px;
+  border-radius: 3px;
+  border: 1px solid #7e858e;
+  color: #7e858e;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    width: 85px;
+  }
+`
+
+export const ConfirmButton = styled.button`
+  height: 40px;
+  width: 75px;
+  border: 0px;
+  background: #3b82f6;
+  color: #ffffff;
+  font-family: 'Roboto';
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    width: 85px;
+  }
+`
+export const LogoutButtons = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  @media screen and (min-width: 768px) {
+    width: 65%;
   }
 `
