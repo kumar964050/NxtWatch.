@@ -53,10 +53,10 @@ const SavedVideos = () => (
                   alt="no videos"
                 />
                 <SavedVideosHeading SavedColor={inputColor}>
-                  Something went wrong. Please try again
+                  No saved videos found
                 </SavedVideosHeading>
                 <SavedVideosParagraph SavedColor={inputColor}>
-                  you can save videos
+                  You can save your videos while watching them
                 </SavedVideosParagraph>
               </NoSavedVideos>
             )}

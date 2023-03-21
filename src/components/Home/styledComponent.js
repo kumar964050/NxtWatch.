@@ -142,45 +142,65 @@ export const VideoDetailUl = styled.ul`
     justify-content: space-between;
   }
 `
-export const NoSavedVideos = styled.div`
+export const NoSavedVideosH = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media screen and (min-width: 768px) {
-    margin-left: 20%;
-    width: 80%;
   }
 `
-export const SavedVideosHeading = styled.h1`
+export const SavedVideosHeadingH = styled.h1`
   font-family: 'Roboto';
   text-align: center;
   font-size: 16px;
   margin-top: 20px;
   color: ${props => props.SavedColor};
+  @media screen and (min-width: 576px) {
+    font-size: 18px;
+  }
   @media screen and (min-width: 768px) {
     font-size: 24px;
   }
 `
 
-export const SavedVideosParagraph = styled.p`
+export const SavedVideosParagraphH = styled.p`
   font-family: 'Roboto';
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 15px;
   color: ${props => props.SavedColor};
   @media screen and (min-width: 768px) {
     font-size: 20px;
   }
 `
-export const SavedImage = styled.img`
-  width: 80%;
+export const SavedImageH = styled.img`
+  width: 53%;
   height: 40%;
+  margin-bottom: 20px;
   @media screen and (min-width: 576px) {
-    width: 54%;
+    width: 38%;
   }
   @media screen and (min-width: 768px) {
     width: 34%;
   }
+`
+export const RetryButton = styled.button`
+  border: 0px;
+  background: #4f46e5;
+  height: 35px;
+  width: 85px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'Roboto';
+  cursor: pointer;
+  outline: none;
+`
+export const LoaderSpinner = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

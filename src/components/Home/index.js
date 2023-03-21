@@ -20,10 +20,12 @@ import {
   SearchButton,
   HomeVideosContainer,
   VideoDetailUl,
-  NoSavedVideos,
-  SavedVideosHeading,
-  SavedVideosParagraph,
-  SavedImage,
+  NoSavedVideosH,
+  SavedVideosHeadingH,
+  SavedVideosParagraphH,
+  SavedImageH,
+  RetryButton,
+  LoaderSpinner,
 } from './styledComponent'
 
 import BannerSection from '../BannerSection'
@@ -48,31 +50,40 @@ class Home extends Component {
   }
 
   searchMovies = async () => {
-    this.setState({homeRouteState: homeApiStatus.initial})
-    const {searchInput} = this.state
-    const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      const newData = data.videos.map(each => ({
-        id: each.id,
-        publishedAt: each.published_at,
-        title: each.title,
-        thumbnailUrl: each.thumbnail_url,
-        viewCount: each.view_count,
-        channel: {
-          name: each.channel.name,
-          profileImageUrl: each.channel.profile_image_url,
+    try {
+      this.setState({homeRouteState: homeApiStatus.initial})
+      const {searchInput} = this.state
+      const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
+      const jwtToken = Cookies.get('jwt_token')
+      const options = {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
-      }))
-      this.setState({homeList: newData, homeRouteState: homeApiStatus.success})
+        method: 'GET',
+      }
+      const response = await fetch(url, options)
+      const data = await response.json()
+      if (response.ok === true) {
+        const newData = data.videos.map(each => ({
+          id: each.id,
+          publishedAt: each.published_at,
+          title: each.title,
+          thumbnailUrl: each.thumbnail_url,
+          viewCount: each.view_count,
+          channel: {
+            name: each.channel.name,
+            profileImageUrl: each.channel.profile_image_url,
+          },
+        }))
+        this.setState({
+          homeList: newData,
+          homeRouteState: homeApiStatus.success,
+        })
+      } else {
+        this.setState({homeRouteState: homeApiStatus.failure})
+      }
+    } catch (e) {
+      this.setState({homeRouteState: homeApiStatus.failure})
     }
   }
 
@@ -88,16 +99,14 @@ class Home extends Component {
     this.setState({premium: false})
   }
 
+  refreshThePage = () => {
+    this.searchMovies()
+  }
+
   renderLoader = () => (
-    <div className="popular-loader-container" data-testid="loader">
-      <Loader
-        type="TailSpin"
-        color="#D81F26"
-        height={50}
-        width={50}
-        className="popular-loader"
-      />
-    </div>
+    <LoaderSpinner data-testid="loader">
+      <Loader type="ThreeDots" color="red" height="50" width="50" />
+    </LoaderSpinner>
   )
 
   renderSuccess = () => {
@@ -108,8 +117,6 @@ class Home extends Component {
         {value => {
           const {darkTheme} = value
           const searchContainer = darkTheme ? '#0f0f0f' : '#f9f9f9'
-          const searchButton = darkTheme ? '#313131' : '#f9f9f9'
-          const border = darkTheme ? '#313131' : '#94a3b8'
           const inputColor = darkTheme ? '#ffffff' : '#000000'
 
           return (
@@ -121,18 +128,21 @@ class Home extends Component {
                   ))}
                 </VideoDetailUl>
               ) : (
-                <NoSavedVideos>
-                  <SavedImage
-                    src="https://res.cloudinary.com/duezhxznc/image/upload/v1677152293/Background-Complete_ojhbus.png"
+                <NoSavedVideosH>
+                  <SavedImageH
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
                     alt="no videos"
                   />
-                  <SavedVideosHeading SavedColor={inputColor}>
-                    Something went wrong. Please try again
-                  </SavedVideosHeading>
-                  <SavedVideosParagraph SavedColor={inputColor}>
-                    you can save videos
-                  </SavedVideosParagraph>
-                </NoSavedVideos>
+                  <SavedVideosHeadingH SavedColor={inputColor}>
+                    No Search results found
+                  </SavedVideosHeadingH>
+                  <SavedVideosParagraphH SavedColor={inputColor}>
+                    Try different key words or remove search filter
+                  </SavedVideosParagraphH>
+                  <RetryButton type="button" onClick={this.refreshThePage}>
+                    Retry
+                  </RetryButton>
+                </NoSavedVideosH>
               )}
             </>
           )
@@ -140,6 +150,34 @@ class Home extends Component {
       </ThemeContext.Consumer>
     )
   }
+
+  renderFailure = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {darkTheme} = value
+        const inputColor = darkTheme ? '#ffffff' : '#000000'
+        const failureImage = darkTheme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+
+        return (
+          <NoSavedVideosH>
+            <SavedImageH src={failureImage} alt="failure" />
+            <SavedVideosHeadingH SavedColor={inputColor}>
+              Oops! Something Went Wrong
+            </SavedVideosHeadingH>
+            <SavedVideosParagraphH SavedColor={inputColor}>
+              We are having some trouble to complete your request. Please try
+              again.
+            </SavedVideosParagraphH>
+            <RetryButton type="button" onClick={this.refreshThePage}>
+              Retry
+            </RetryButton>
+          </NoSavedVideosH>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
 
   renderHomeRoute = () => {
     const {homeRouteState} = this.state
@@ -157,7 +195,7 @@ class Home extends Component {
   }
 
   render() {
-    const {premium, homeList, searchInput} = this.state
+    const {premium, searchInput} = this.state
     return (
       <ThemeContext.Consumer>
         {value => {
