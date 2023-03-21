@@ -30,8 +30,18 @@
 .popup-content {
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  background: transparent;
-  align-items: center;
+  padding: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .popup-content {
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    align-items: center;
+  }
+}
+
+.list-style {
+  text-decoration: none;
 }

@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 import {MdClose} from 'react-icons/md'
 import {BiSearch} from 'react-icons/bi'
 import Cookies from 'js-cookie'
@@ -19,14 +20,27 @@ import {
   SearchButton,
   HomeVideosContainer,
   VideoDetailUl,
+  NoSavedVideos,
+  SavedVideosHeading,
+  SavedVideosParagraph,
+  SavedImage,
 } from './styledComponent'
+
 import BannerSection from '../BannerSection'
+
+const homeApiStatus = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
 
 class Home extends Component {
   state = {
     searchInput: '',
     homeList: [],
     premium: true,
+    homeRouteState: homeApiStatus.initial,
   }
 
   componentDidMount() {
@@ -34,6 +48,7 @@ class Home extends Component {
   }
 
   searchMovies = async () => {
+    this.setState({homeRouteState: homeApiStatus.initial})
     const {searchInput} = this.state
     const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const jwtToken = Cookies.get('jwt_token')
@@ -57,7 +72,7 @@ class Home extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
       }))
-      this.setState({homeList: newData})
+      this.setState({homeList: newData, homeRouteState: homeApiStatus.success})
     }
   }
 
@@ -71,6 +86,74 @@ class Home extends Component {
 
   deletePremium = () => {
     this.setState({premium: false})
+  }
+
+  renderLoader = () => (
+    <div className="popular-loader-container" data-testid="loader">
+      <Loader
+        type="TailSpin"
+        color="#D81F26"
+        height={50}
+        width={50}
+        className="popular-loader"
+      />
+    </div>
+  )
+
+  renderSuccess = () => {
+    const {homeList} = this.state
+
+    return (
+      <ThemeContext.Consumer>
+        {value => {
+          const {darkTheme} = value
+          const searchContainer = darkTheme ? '#0f0f0f' : '#f9f9f9'
+          const searchButton = darkTheme ? '#313131' : '#f9f9f9'
+          const border = darkTheme ? '#313131' : '#94a3b8'
+          const inputColor = darkTheme ? '#ffffff' : '#000000'
+
+          return (
+            <>
+              {homeList.length > 0 ? (
+                <VideoDetailUl VideoUl={searchContainer}>
+                  {homeList.map(eachVideo => (
+                    <VideoDetail key={eachVideo.id} videoDetail={eachVideo} />
+                  ))}
+                </VideoDetailUl>
+              ) : (
+                <NoSavedVideos>
+                  <SavedImage
+                    src="https://res.cloudinary.com/duezhxznc/image/upload/v1677152293/Background-Complete_ojhbus.png"
+                    alt="no videos"
+                  />
+                  <SavedVideosHeading SavedColor={inputColor}>
+                    Something went wrong. Please try again
+                  </SavedVideosHeading>
+                  <SavedVideosParagraph SavedColor={inputColor}>
+                    you can save videos
+                  </SavedVideosParagraph>
+                </NoSavedVideos>
+              )}
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
+  }
+
+  renderHomeRoute = () => {
+    const {homeRouteState} = this.state
+
+    switch (homeRouteState) {
+      case homeApiStatus.inProgress:
+        return this.renderLoader()
+      case homeApiStatus.success:
+        return this.renderSuccess()
+      case homeApiStatus.failure:
+        return this.renderFailure()
+      default:
+        return null
+    }
   }
 
   render() {
@@ -134,11 +217,7 @@ class Home extends Component {
                       <BiSearch />
                     </SearchButton>
                   </SearchContainer>
-                  <VideoDetailUl VideoUl={searchContainer}>
-                    {homeList.map(eachVideo => (
-                      <VideoDetail key={eachVideo.id} videoDetail={eachVideo} />
-                    ))}
-                  </VideoDetailUl>
+                  {this.renderHomeRoute()}
                 </HomeVideosContainer>
               </HomeContainer>
             </>

@@ -53,6 +53,7 @@ class SpecificVideoDetail extends Component {
   }
 
   getVideoDetails = async () => {
+    this.setState({videoState: videoApiStatus.inProgress})
     const {match} = this.props
     const {params} = match
     const {id} = params

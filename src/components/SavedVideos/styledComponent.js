@@ -98,6 +98,6 @@ export const SavedImage = styled.img`
     width: 54%;
   }
   @media screen and (min-width: 768px) {
-    width: 45%;
+    width: 34%;
   }
 `

@@ -39,21 +39,16 @@ export const HeaderTheme = styled.button`
 export const UnorderedList = styled.ul`
   list-style-type: none;
   padding-left: 0px;
-  width: 200px;
+  width: 100%;
 
   height: 180px;
 
-  margin-top: 0px;
+  margin-top: 50%;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
-  margin-right: 2%;
-  &::before {
-    height: 30px;
-    width: 30px;
-    background: yellow;
-  }
+  background: ${props => props.Ullist};
 `
 
 export const HamburgerButton = styled(HeaderTheme)`
@@ -72,29 +67,35 @@ export const LogoutButton = styled(HeaderTheme)`
 `
 
 export const ListItem = styled.li`
-  padding-left: 30px;
   height: 45px;
-  padding-right: 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  background-color: ${props => props.Background};
 `
 export const NavNames = styled.p`
   font-family: 'Roboto';
   color: #475569;
   font-weight: 400;
+  color: ${props => props.NavElement};
+  font-weight: ${props => props.FontWeight};
 `
 export const ReactNavIcons = styled.div`
   height: 20px;
   color: #475569;
+  margin-right: 20px;
+  margin-left: 37%;
+  color: ${props => props.NavIcons};
 `
 export const UnOrderedListCon = styled.div`
-  height: 180px;
+  height: 100vh;
   width: 100%;
   position: absolute;
-  top: 9%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  background: #0f0f0f;
+  flex-direction: column;
+  align-items: flex-end;
+  background: ${props => props.Ullist};
 `
 export const AccountProfile = styled.img`
   display: none;
@@ -170,4 +171,16 @@ export const LogoutButtons = styled.div`
   @media screen and (min-width: 768px) {
     width: 65%;
   }
+`
+export const CrossMark = styled.button`
+  color: ${props => props.NavElement}
+  border: 0px;
+  background-color: transparent;
+  transform: rotate(45deg);
+  padding-top: 10px;
+  padding-right: 10px;
+  font-size: 27px;
+  cursor: pointer;
+  outline: none;
+  border: 0px;
 `
