@@ -111,7 +111,7 @@ export const ChannelSpan = styled.p`
   width: 6px;
   height: 20px;
   margin-right: 5px;
-  color: #212121;
+  color: #94a3b8;
   @media screen and (min-width: 576px) {
     font-size: 12px;
     display: none;
@@ -126,7 +126,7 @@ export const ChannelSpan2 = styled.p`
   width: 6px;
   height: 20px;
   margin-right: 5px;
-  color: #212121;
+  color: #94a3b8;
   margin-left: 5px;
   @media screen and (min-width: 576px) {
     margin-top: -3px;

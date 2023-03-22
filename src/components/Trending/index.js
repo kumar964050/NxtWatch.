@@ -65,7 +65,7 @@ class Trending extends Component {
         }))
         this.setState({
           trendingList: newData,
-          homeRouteState: homeApiStatus.failure,
+          homeRouteState: homeApiStatus.success,
         })
       } else {
         this.setState({homeRouteState: homeApiStatus.failure})
