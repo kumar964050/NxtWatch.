@@ -21,12 +21,12 @@ const NotFound = () => {
 
         return (
           <NoSavedVideosN>
-            <SavedImageN src={failureImage} alt="failure" />
+            <SavedImageN src={failureImage} alt="not found" />
             <SavedVideosHeadingN SavedColor={inputColor}>
               Page Not Found
             </SavedVideosHeadingN>
             <SavedVideosParagraphN>
-              We are sorry, the page you requested could not be found.
+              we are sorry, the page you requested could not be found.
             </SavedVideosParagraphN>
           </NoSavedVideosN>
         )

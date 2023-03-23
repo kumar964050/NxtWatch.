@@ -171,7 +171,10 @@ class Trending extends Component {
           return (
             <>
               <Header />
-              <TrendingContainer TrendingBackground={searchContainer}>
+              <TrendingContainer
+                TrendingBackground={searchContainer}
+                data-testid="trending"
+              >
                 <BannerSection />
                 {this.renderHomeRoute()}
               </TrendingContainer>

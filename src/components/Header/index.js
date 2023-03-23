@@ -135,6 +135,7 @@ class Header extends Component {
                 <HeaderThemeContainer>
                   <HeaderTheme
                     IconsColor={iconsColor}
+                    data-testid="theme"
                     type="button"
                     onClick={changeAppTheme}
                   >

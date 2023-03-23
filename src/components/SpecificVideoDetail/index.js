@@ -28,6 +28,11 @@ import {
   LikeButton,
   VideoResCon,
   VideoDetailsContainer,
+  NoSavedVideosH,
+  SavedVideosHeadingH,
+  SavedVideosParagraphH,
+  SavedImageH,
+  RetryButton,
 } from './styledComponent'
 import './index.css'
 
@@ -53,39 +58,47 @@ class SpecificVideoDetail extends Component {
   }
 
   getVideoDetails = async () => {
-    this.setState({videoState: videoApiStatus.inProgress})
-    const {match} = this.props
-    const {params} = match
-    const {id} = params
-    const url = `https://apis.ccbp.in/videos/${id}`
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      const newData = {
-        id: data.video_details.id,
-        publishedAt: data.video_details.published_at,
-        title: data.video_details.title,
-        thumbnailUrl: data.video_details.thumbnail_url,
-        viewCount: data.video_details.view_count,
-        videoUrl: data.video_details.video_url,
-        channel: {
-          name: data.video_details.channel.name,
-          profileImageUrl: data.video_details.channel.profile_image_url,
-          subscriberCount: data.video_details.channel.subscriber_count,
+    try {
+      this.setState({videoState: videoApiStatus.inProgress})
+      const {match} = this.props
+      const {params} = match
+      const {id} = params
+      const url = `https://apis.ccbp.in/videos/${id}`
+      const jwtToken = Cookies.get('jwt_token')
+      const options = {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
-        description: data.video_details.description,
+        method: 'GET',
       }
-      const {publishedAt} = newData
-      console.log(newData)
-      newData.publishedAt = formatDistanceToNow(new Date(publishedAt))
-      this.setState({videoDetail: newData, videoState: videoApiStatus.success})
+      const response = await fetch(url, options)
+      const data = await response.json()
+      if (response.ok === true) {
+        const newData = {
+          id: data.video_details.id,
+          publishedAt: data.video_details.published_at,
+          title: data.video_details.title,
+          thumbnailUrl: data.video_details.thumbnail_url,
+          viewCount: data.video_details.view_count,
+          videoUrl: data.video_details.video_url,
+          channel: {
+            name: data.video_details.channel.name,
+            profileImageUrl: data.video_details.channel.profile_image_url,
+            subscriberCount: data.video_details.channel.subscriber_count,
+          },
+          description: data.video_details.description,
+        }
+        const {publishedAt} = newData
+        newData.publishedAt = formatDistanceToNow(new Date(publishedAt))
+        this.setState({
+          videoDetail: newData,
+          videoState: videoApiStatus.success,
+        })
+      } else {
+        this.setState({videoState: videoApiStatus.failure})
+      }
+    } catch (e) {
+      this.setState({videoState: videoApiStatus.failure})
     }
   }
 
@@ -230,6 +243,34 @@ class SpecificVideoDetail extends Component {
     )
   }
 
+  renderFailure = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {darkTheme} = value
+        const inputColor = darkTheme ? '#ffffff' : '#000000'
+        const failureImage = darkTheme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+
+        return (
+          <NoSavedVideosH>
+            <SavedImageH src={failureImage} alt="failure" />
+            <SavedVideosHeadingH SavedColor={inputColor}>
+              Oops! Something Went Wrong
+            </SavedVideosHeadingH>
+            <SavedVideosParagraphH SavedColor={inputColor}>
+              We are having some trouble to complete your request. Please try
+              again.
+            </SavedVideosParagraphH>
+            <RetryButton type="button" onClick={this.refreshThePage}>
+              Retry
+            </RetryButton>
+          </NoSavedVideosH>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
+
   renderVideo = () => {
     const {videoState} = this.state
 
@@ -238,7 +279,8 @@ class SpecificVideoDetail extends Component {
         return this.renderLoader()
       case videoApiStatus.success:
         return this.renderSuccess()
-
+      case videoApiStatus.failure:
+        return this.renderFailure()
       default:
         return null
     }
@@ -246,7 +288,7 @@ class SpecificVideoDetail extends Component {
 
   render() {
     return (
-      <VideoDetailContainer>
+      <VideoDetailContainer data-testid="videoItemDetails">
         <Header />
         {this.renderVideo()}
       </VideoDetailContainer>

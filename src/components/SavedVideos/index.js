@@ -28,7 +28,10 @@ const SavedVideos = () => (
       return (
         <>
           <Header />
-          <TrendingContainer TrendingBackground={searchContainer}>
+          <TrendingContainer
+            TrendingBackground={searchContainer}
+            data-testid="savedVideos"
+          >
             <BannerSection />
             {savedVideos.length > 0 ? (
               <>

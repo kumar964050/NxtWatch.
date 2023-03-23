@@ -164,7 +164,10 @@ class Gaming extends Component {
           return (
             <>
               <Header />
-              <GamingContainer GamingBackground={searchContainer}>
+              <GamingContainer
+                GamingBackground={searchContainer}
+                data-testid="gaming"
+              >
                 <BannerSection />
                 {this.renderHomeRoute()}
               </GamingContainer>

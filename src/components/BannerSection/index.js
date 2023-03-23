@@ -86,7 +86,10 @@ const BannerSection = props => {
         const savedFontWeight = savedRoute ? 600 : 400
 
         return (
-          <UnOrderedListConB BannerBackground={bannerBackground}>
+          <UnOrderedListConB
+            BannerBackground={bannerBackground}
+            data-testid="banner"
+          >
             <UnorderedListB>
               <Link to="/" className="list-style">
                 <ListItemB background={homeBackground}>

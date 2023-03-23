@@ -20,7 +20,7 @@ export const GamingImage = styled.img`
   @media screen and (min-width: 768px) {
   }
 `
-export const GamingHeading = styled.h1`
+export const GamingHeading = styled.p`
   font-family: 'Roboto';
   font-size: 12px;
   color: ${props => props.GamingTitle};
