@@ -58,8 +58,8 @@ class App extends Component {
             path="/saved-videos"
             component={SavedVideos}
           />
-          <UserDetailsRoute path="/not-found" component={NotFound} />
-          <Redirect to="not-found" />
+          <UserDetailsRoute path="/bad-path" component={NotFound} />
+          <Redirect to="/bad-path" />
         </Switch>
       </ThemeContext.Provider>
     )

@@ -53,7 +53,7 @@ const SavedVideos = () => (
               <NoSavedVideos>
                 <SavedImage
                   src="https://res.cloudinary.com/duezhxznc/image/upload/v1677152293/Background-Complete_ojhbus.png"
-                  alt="no videos"
+                  alt="no saved videos"
                 />
                 <SavedVideosHeading SavedColor={inputColor}>
                   No saved videos found

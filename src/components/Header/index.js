@@ -227,7 +227,6 @@ class Header extends Component {
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                     alt="profile"
                   />
-
                   <Popup
                     modal
                     trigger={
@@ -235,6 +234,36 @@ class Header extends Component {
                         <LogoutButton IconsColor={iconsColor}>
                           <FiLogOut className="dark-theme" />
                         </LogoutButton>
+                        <LogoutMdButton>Logout</LogoutMdButton>
+                      </button>
+                    }
+                  >
+                    {close => (
+                      <>
+                        <PopupDiv popupBackground={headerBackground}>
+                          <LogoutDescription IconsColor={iconsColor}>
+                            Are you sure you want logout?
+                          </LogoutDescription>
+                          <LogoutButtons>
+                            <CancelButton type="button" onClick={() => close()}>
+                              Cancel
+                            </CancelButton>
+                            <ConfirmButton
+                              type="button"
+                              onClick={this.confirmButton}
+                            >
+                              Confirm
+                            </ConfirmButton>
+                          </LogoutButtons>
+                        </PopupDiv>
+                      </>
+                    )}
+                  </Popup>
+
+                  <Popup
+                    modal
+                    trigger={
+                      <button type="button" className="trigger-button">
                         <LogoutMdButton>Logout</LogoutMdButton>
                       </button>
                     }

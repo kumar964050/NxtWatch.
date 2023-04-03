@@ -123,7 +123,7 @@ class Gaming extends Component {
 
         return (
           <NoSavedVideosH>
-            <SavedImageH src={failureImage} alt="failure" />
+            <SavedImageH src={failureImage} alt="failure view" />
             <SavedVideosHeadingH SavedColor={inputColor}>
               Oops! Something Went Wrong
             </SavedVideosHeadingH>

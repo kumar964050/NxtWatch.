@@ -162,7 +162,7 @@ class Home extends Component {
 
         return (
           <NoSavedVideosH>
-            <SavedImageH src={failureImage} alt="failure" />
+            <SavedImageH src={failureImage} alt="failure view" />
             <SavedVideosHeadingH SavedColor={inputColor}>
               Oops! Something Went Wrong
             </SavedVideosHeadingH>
@@ -226,7 +226,7 @@ class Home extends Component {
                             alt="website logo"
                           />
                           <HomeDescription>
-                            Buy Nxt Watch Premium prepaid plans with UPI
+                            Buy Nxt Watch Premium
                           </HomeDescription>
                           <HomeButton>GET IT NOW</HomeButton>
                         </PremiumDetails>
